@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <dataServiceUrl></dataServiceUrl>
+
+  <!---Azure Active Directory Authentication tenant authority URL -->
+  <azureActiveDirectoryAuthenticationTenantAuthorityUrl></azureActiveDirectoryAuthenticationTenantAuthorityUrl>
+
+  <!---Azure Active Directory Authentication return URI -->
+  <azureActiveDirectoryAuthenticationReturnUri>http://localhost</azureActiveDirectoryAuthenticationReturnUri>
+
+  <!---The Azure AD-authenticated resource(s) that the app should access -->
+  <azureActiveDirectoryAuthenticationResourceUri>https://graph.windows.net</azureActiveDirectoryAuthenticationResourceUri>
+</config>
