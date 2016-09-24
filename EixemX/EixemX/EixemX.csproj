@@ -66,6 +66,7 @@
     <Compile Include="Services\Authentication\IAuthenticationService.cs" />
     <Compile Include="Services\Authentication\IAuthenticator.cs" />
     <Compile Include="Services\Config\IConfigFetcher.cs" />
+    <Compile Include="Extensions\RegistrationModelExtension.cs" />
     <Compile Include="ViewModels\Authentication\RegistrationPasswordConfirmViewModel.cs" />
     <Compile Include="ViewModels\Authentication\RegistrationPasswordViewModel.cs" />
     <Compile Include="ViewModels\Authentication\RegistrationViewModel.cs" />
@@ -162,6 +163,12 @@
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EixemX.Services\EixemX.Services.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>EixemX.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

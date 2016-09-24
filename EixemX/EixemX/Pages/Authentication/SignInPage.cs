@@ -36,13 +36,13 @@ namespace EixemX.Pages.Authentication
 
             var linkToPasswordForget = labelFactory.HyperLinkLabel();
 
-            ImageButton backArrowButton = buttonFactory.ArrowLeft(ViewModel.BackButtonClicked); 
+            var backArrowButton = buttonFactory.ArrowLeft(ViewModel.BackButtonClicked);
 
-            AbsoluteLayout titleLayout = layoutFactory.TitleLayout(imageFactory.WhiteLogoSmall(), backArrowButton);
-              
-            StackLayout fieldsLayout = layoutFactory.LayoutFields(messageLabel, emailEntry, passwordEntry);
-             
-            StackLayout buttonsLayout = layoutFactory.LayoutButtons(linkToPasswordForget, linkToAuthentication);
+            var titleLayout = layoutFactory.TitleLayout(imageFactory.WhiteLogoSmall(), backArrowButton);
+
+            var fieldsLayout = layoutFactory.LayoutFields(messageLabel, emailEntry, passwordEntry);
+
+            var buttonsLayout = layoutFactory.LayoutButtons(linkToPasswordForget, linkToAuthentication);
 
 
             var content = new StackLayout

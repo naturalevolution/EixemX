@@ -57,5 +57,12 @@ namespace EixemX.Pages.Base
         {
             System.Diagnostics.Debug.WriteLine(message);
         }
+
+        protected Label GetMessageLabel()
+        { 
+            var result = labelFactory.LabelMessage();
+            result.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
+            return result;
+        }
     }
 }

@@ -161,6 +161,69 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre date de naissance.
+        /// </summary>
+        internal static string Alert_Registration_BirthdayInvalid {
+            get {
+                return ResourceManager.GetString("Alert_Registration_BirthdayInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre adresse mail.
+        /// </summary>
+        internal static string Alert_Registration_EmainInvalid {
+            get {
+                return ResourceManager.GetString("Alert_Registration_EmainInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre prénom.
+        /// </summary>
+        internal static string Alert_Registration_FirstnameInvalid {
+            get {
+                return ResourceManager.GetString("Alert_Registration_FirstnameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Création de votre compte en cours ....
+        /// </summary>
+        internal static string Alert_Registration_InProgress {
+            get {
+                return ResourceManager.GetString("Alert_Registration_InProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre nom.
+        /// </summary>
+        internal static string Alert_Registration_LastnameInvalid {
+            get {
+                return ResourceManager.GetString("Alert_Registration_LastnameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre mot de passe.
+        /// </summary>
+        internal static string Alert_Registration_PasswordInvalid {
+            get {
+                return ResourceManager.GetString("Alert_Registration_PasswordInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez confirmer le même mot de passe.
+        /// </summary>
+        internal static string Alert_Registration_PasswordNotMatch {
+            get {
+                return ResourceManager.GetString("Alert_Registration_PasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vérifier vos informations.
         /// </summary>
         internal static string Alert_Registration_Retry {

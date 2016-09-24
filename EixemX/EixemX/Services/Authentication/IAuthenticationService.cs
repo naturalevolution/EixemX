@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EixemX.Services.Account;
 
 namespace EixemX.Services.Authentication
 {
@@ -11,5 +12,7 @@ namespace EixemX.Services.Authentication
         Task<string> GetTokenAsync();
 
         bool IsAuthenticated { get; }
+         
+        Task<bool> RegisterAsync(RegistrationModel model);
     }
 }

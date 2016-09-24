@@ -147,7 +147,7 @@ namespace EixemX.Factories
             result.Children.Add(backgroundBtnOverlay);
             result.Children.Add(backgroundLine);
             result.Children.Add(buttonBack);
-
+            
             AbsoluteLayout.SetLayoutBounds(result, new Rectangle(0, 0, 1, 40));
             AbsoluteLayout.SetLayoutFlags(result, AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
 
@@ -159,8 +159,12 @@ namespace EixemX.Factories
         {
             var result = new ImageButton
             {
+                BackgroundColor = Palette.Transparent,
                 Source = ImageSource.FromFile(ArrowLeftPicture),
-                BackgroundColor = Palette.Transparent
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                HorizontalOptions = LayoutOptions.Start,
+                HeightRequest = 50,
+                WidthRequest = 50
             };
             result.Clicked += eventClicked;
             return result;

@@ -198,4 +198,25 @@
   <data name="Alert_Registration_Retry" xml:space="preserve">
     <value>Vérifier vos informations</value>
   </data>
+  <data name="Alert_Registration_InProgress" xml:space="preserve">
+    <value>Création de votre compte en cours ...</value>
+  </data>
+  <data name="Alert_Registration_EmainInvalid" xml:space="preserve">
+    <value>Vérifier votre adresse mail</value>
+  </data>
+  <data name="Alert_Registration_PasswordInvalid" xml:space="preserve">
+    <value>Vérifier votre mot de passe</value>
+  </data>
+  <data name="Alert_Registration_PasswordNotMatch" xml:space="preserve">
+    <value>Vous devez confirmer le même mot de passe</value>
+  </data>
+  <data name="Alert_Registration_BirthdayInvalid" xml:space="preserve">
+    <value>Vérifier votre date de naissance</value>
+  </data>
+  <data name="Alert_Registration_FirstnameInvalid" xml:space="preserve">
+    <value>Vérifier votre prénom</value>
+  </data>
+  <data name="Alert_Registration_LastnameInvalid" xml:space="preserve">
+    <value>Vérifier votre nom</value>
+  </data>
 </root>

@@ -16,26 +16,26 @@ namespace EixemX.Pages.Authentication
 
         public Layout CreatePage()
         {
-            AbsoluteLayout titleLayout = layoutFactory.TitleLayout(TextResources.Registration_Title,
+            var titleLayout = layoutFactory.TitleLayout(TextResources.Registration_Title,
                 TextResources.Registration_TitleBar, ViewModel.BackButtonClicked, ViewModel.BackBarButtonClicked);
 
             var lastnameEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Lastname);
-            lastnameEntry.SetBinding(Entry.TextProperty, "Lastname", BindingMode.TwoWay); 
+            lastnameEntry.SetBinding(Entry.TextProperty, "Model.Lastname", BindingMode.TwoWay); 
 
             var firstnameEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Firstname);
-            firstnameEntry.SetBinding(Entry.TextProperty, "Firstname", BindingMode.TwoWay); 
+            firstnameEntry.SetBinding(Entry.TextProperty, "Model.Firstname", BindingMode.TwoWay); 
 
             var birthdayEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Birthday);
-            birthdayEntry.SetBinding(Entry.TextProperty, "Birthday", BindingMode.TwoWay); 
+            birthdayEntry.SetBinding(Entry.TextProperty, "Model.Birthday", BindingMode.TwoWay); 
 
             var emailEntry = entryFactory.EntryDefaultEmail(TextResources.Account_Field_Email);
-            emailEntry.SetBinding(Entry.TextProperty, "Email", BindingMode.TwoWay); 
+            emailEntry.SetBinding(Entry.TextProperty, "Model.Email", BindingMode.TwoWay);
 
-            StackLayout fieldsLayout = layoutFactory.LayoutFields(lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
+            var fieldsLayout = layoutFactory.LayoutFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
 
-            var linkToNext = buttonFactory.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked); 
+            var linkToNext = buttonFactory.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
 
-            StackLayout buttonsLayout = layoutFactory.LayoutButtons(linkToNext);
+            var buttonsLayout = layoutFactory.LayoutButtons(linkToNext);
              
             var content = new StackLayout
             {

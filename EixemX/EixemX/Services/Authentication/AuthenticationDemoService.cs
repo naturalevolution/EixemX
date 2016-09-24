@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EixemX.Services.Account;
 using EixemX.Services.Authentication;
  
 namespace EixemX.Services.Authentication
@@ -14,10 +15,22 @@ namespace EixemX.Services.Authentication
             public string Email { get; set; }
             public string Firstname { get; set; }
             public string Lastname { get; set; }
+            public string Note { get; set; }
         }
 
         private const string EmailDemo = "demo";
         private const string PasswordDemo = "demo";
+
+        private AuthenticationDemoResult GetDemoAuthentication(string message)
+        {
+            return new AuthenticationDemoResult
+            {
+                Email = "doctor.who@eixem.com",
+                Firstname = "Doctor",
+                Lastname = "Who",
+                Note = message
+            };
+        }
 
         private AuthenticationDemoResult AuthenticationResult { get; set; }
 
@@ -32,12 +45,7 @@ namespace EixemX.Services.Authentication
                 !string.IsNullOrEmpty(password) &&
                 password.Equals(PasswordDemo, StringComparison.CurrentCultureIgnoreCase))
             {
-                AuthenticationResult = new AuthenticationDemoResult
-                {
-                    Email = "contact@eixem.com",
-                    Firstname = "Utilisateur",
-                    Lastname = "EIXEM"
-                };
+                AuthenticationResult = GetDemoAuthentication("AuthenticationDemoService AuthenticateAsync");
             }
 
             return IsAuthenticated;
@@ -56,6 +64,22 @@ namespace EixemX.Services.Authentication
         public bool IsAuthenticated
         {
             get { return AuthenticationResult != null; }
+        } 
+
+        public async Task<bool> RegisterAsync(RegistrationModel model)
+        {
+            //Server call simulation
+            await Task.Delay(2000);
+             
+            var result = model.IsValid();
+            
+            if (result)
+            {
+                model.Email = EmailDemo;
+                model.Password = PasswordDemo;
+            }
+
+            return result;
         }
     }
 }

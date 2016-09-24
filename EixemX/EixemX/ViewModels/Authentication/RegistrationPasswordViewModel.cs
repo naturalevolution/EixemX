@@ -1,6 +1,8 @@
 ﻿using System;
+using EixemX.Extensions;
 using EixemX.Factories;
 using EixemX.Pages.Authentication;
+using EixemX.Services.Account;
 using EixemX.ViewModels.Base;
 using Xamarin.Forms;
 using XLabs.Forms.Mvvm;
@@ -9,26 +11,24 @@ namespace EixemX.ViewModels.Authentication
 {
     public class RegistrationPasswordViewModel : BaseViewModel
     {
-        public RegistrationPasswordViewModel(INavigation navigation) :base(navigation)
-        {
-            
-        }
-        private string _password;
+        public RegistrationModel Model { get; set; }
 
-        public string Password
+        public RegistrationPasswordViewModel(RegistrationModel model, INavigation navigation) :base(navigation)
         {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                SetProperty(ref _password, value, "Password");
-            }
-        }
+            Model = model;
+        } 
 
         public async void NextClicked(object sender, EventArgs e)
         { 
             LogDebug("NextClicked");
-            await PushAsync(new RegistrationPasswordConfirmPage());
+            if (Model.IsValidPassword())
+            {
+                await PushAsync(new RegistrationPasswordConfirmPage(Model));
+            }
+            else
+            {
+                DisplayMessage = Model.GetErrorMessage();
+            }
             buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
         } 
 

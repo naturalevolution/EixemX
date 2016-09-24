@@ -4,6 +4,7 @@ using EixemX.Extensions;
 using EixemX.Factories;
 using EixemX.Helpers.Constants;
 using EixemX.Localization;
+using EixemX.Services.Account;
 using EixemX.ViewModels.Base;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin.Forms;
@@ -12,22 +13,15 @@ using XLabs.Forms.Mvvm;
 namespace EixemX.ViewModels.Authentication
 {
     public class RegistrationPasswordConfirmViewModel : BaseViewModel
-    {
-        public RegistrationPasswordConfirmViewModel(INavigation navigation) :base(navigation)
-        {
-            
-        }
-        private string _confirmPassword;
+    { 
 
-        public string ConfirmPassword
+        public RegistrationPasswordConfirmViewModel(RegistrationModel model, INavigation navigation) : base(navigation)
         {
-            get { return _confirmPassword; }
-            set
-            {
-                _confirmPassword = value;
-                SetProperty(ref _confirmPassword, value, "ConfirmPassword");
-            }
+            Model = model; 
         }
+         
+        public RegistrationModel Model { get; set; }
+         
 
         public async void NextClicked(object sender, EventArgs e)
         { 
@@ -36,28 +30,38 @@ namespace EixemX.ViewModels.Authentication
             {
                 // ViewModel.ShowSpinner = true;
 
-                if (await Authenticate())
+                if (Model.IsValid())
                 {
-                    App.GoToRoot();
+                    if (await RegisterAndAuthenticate())
+                    {
+                        App.GoToRoot();
 
-                    MessagingCenter.Send(this, MessagingServiceConstants.REGISTERED);
+                        MessagingCenter.Send(this, MessagingServiceConstants.REGISTERED);
+                    }
+                    else
+                    {
+                        DisplayMessage = TextResources.Alert_Registration_Retry;
+                    }
                 }
                 else
                 {
-                    DisplayMessage = TextResources.Alert_Registration_Retry;
+                    DisplayMessage = Model.GetErrorMessage();
                 }
             });
             buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
         }
 
-        private async Task<bool> Authenticate()
+        private async Task<bool> RegisterAndAuthenticate()
         {
             var success = false;
             try
-            {
-                DisplayMessage = TextResources.Alert_Authentication_InProgress;
+            { 
+                DisplayMessage = TextResources.Alert_Registration_InProgress;
 
-                success = await authenticationService.AuthenticateAsync(ConfirmPassword, ConfirmPassword);
+                if (await authenticationService.RegisterAsync(Model))
+                { 
+                    success = await authenticationService.AuthenticateAsync(Model.Email, Model.Password);
+                } 
             }
             catch (Exception ex)
             {

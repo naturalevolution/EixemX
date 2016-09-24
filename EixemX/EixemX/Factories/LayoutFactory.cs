@@ -23,7 +23,7 @@ namespace EixemX.Factories
             ImageFactory = DependencyService.Get<IImageFactory>(); 
         }
 
-        public RelativeLayout LayoutWithBackground(View view)
+        public Layout LayoutWithBackground(View view)
         {
             var layout = new RelativeLayout
             {
@@ -54,7 +54,7 @@ namespace EixemX.Factories
             return layout;
         }
 
-        public AbsoluteLayout TitleLayout(Image image, ImageButton backButton)
+        public Layout TitleLayout(Image image, ImageButton backButton)
         {
             var result = new AbsoluteLayout
             {
@@ -74,7 +74,7 @@ namespace EixemX.Factories
             return result;
         }
 
-        public StackLayout LayoutFields(params View[] views)
+        public Layout LayoutFields(params View[] views)
         {
             var result = new StackLayout
             {
@@ -91,7 +91,7 @@ namespace EixemX.Factories
             return result;
         }
 
-        public StackLayout LayoutButtons(params View[] views)
+        public Layout LayoutButtons(params View[] views)
         {
             var result = new StackLayout
             {
@@ -108,7 +108,7 @@ namespace EixemX.Factories
             return result;
         }
 
-        public AbsoluteLayout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton,
+        public Layout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton,
             EventHandler eventBarButton = null)
         {
             var result = GenerateTitleLayout(text, titleBar, eventBackButton, eventBarButton, false);
@@ -116,14 +116,14 @@ namespace EixemX.Factories
             return result;
         }
 
-        public AbsoluteLayout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null)
+        public Layout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null)
         {
             var result = GenerateTitleLayout(text, titleBar, eventBackButton, eventBarButton, true);
 
             return result; 
         }
 
-        private AbsoluteLayout GenerateTitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton, bool isUpper)
+        private Layout GenerateTitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton, bool isCenter)
         {
             var result = new AbsoluteLayout
             {
@@ -132,12 +132,12 @@ namespace EixemX.Factories
                 HorizontalOptions = LayoutOptions.FillAndExpand,
             };
 
-            Label labelTitle = LabelFactory.Title(text, isUpper);
+            Label labelTitle = LabelFactory.Title(text);
             AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(labelTitle, AbsoluteLayoutFlags.PositionProportional);
 
             var buttonBackArrow = ButtonFactory.ArrowLeft(eventBackButton);
-            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(buttonBackArrow, AbsoluteLayoutFlags.PositionProportional); 
 
             var barTop = ButtonFactory.BarWithButtonTitle(titleBar, eventBarButton ?? eventBackButton);
@@ -146,18 +146,27 @@ namespace EixemX.Factories
             result.Children.Add(barTop);
             result.Children.Add(labelTitle);
 
-            return result;
+            var layout = new StackLayout
+            {
+                BackgroundColor = Palette.Transparent,
+                VerticalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = 160,
+                Children = {result}
+            };
+
+            return layout;
         }
     }
 
     public interface ILayoutFactory
     {
-        RelativeLayout LayoutWithBackground(View view);
-        AbsoluteLayout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
-        AbsoluteLayout TitleLayout(Image image, ImageButton backButton);
-        StackLayout LayoutFields(params View[] views);
-        StackLayout LayoutButtons(params View[] views);
-        AbsoluteLayout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
+        Layout LayoutWithBackground(View view);
+        Layout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
+        Layout TitleLayout(Image image, ImageButton backButton);
+        Layout LayoutFields(params View[] views);
+        Layout LayoutButtons(params View[] views);
+        Layout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
         //, EventHandler<EventArgs> backButtonClicked);
     }
 }

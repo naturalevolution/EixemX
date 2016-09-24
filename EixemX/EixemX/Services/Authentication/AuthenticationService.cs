@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EixemX.Services.Account;
 using EixemX.Services.Authentication;
 using EixemX.Services.Config;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -83,6 +84,11 @@ namespace EixemX.Services.Authentication
                     return _AuthenticationResult != null;
             }
         }
+
+        public Task<bool> RegisterAsync(RegistrationModel model)
+        {
+            throw new NotImplementedException();
+        } 
 
         bool _AuthenticationBypassed;
         /// <summary>

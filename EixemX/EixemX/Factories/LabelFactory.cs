@@ -20,7 +20,7 @@ namespace EixemX.Factories
                     };
         }
 
-        public Label Title(string text, bool isUpper)
+        public Label Title(string text)
         { 
             var result = new Label
             {
@@ -48,7 +48,7 @@ namespace EixemX.Factories
     public interface ILabelFactory
     {
         Label LabelMessage(); 
-        Label Title(string text, bool isUpper);
+        Label Title(string text);
         HyperLinkLabel HyperLinkLabel();
     }
 }
