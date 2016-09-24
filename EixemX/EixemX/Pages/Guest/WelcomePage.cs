@@ -24,11 +24,9 @@ namespace EixemX.Pages.Guest
 
         private Layout CreateLayout()
         {
-            var linkToRegistration = buttonFactory.WhiteDefault(TextResources.Button_Registration); 
-            linkToRegistration.Released += ViewModel.NavigateToRegistrationPage;
-             
-            var linkToSignIn = buttonFactory.TransparentDefault(TextResources.Button_SignIn);  
-            linkToSignIn.Released += ViewModel.NavigateToSignInPage;
+            var linkToRegistration = buttonFactory.WhiteDefault(TextResources.Button_Registration, ViewModel.RegistrationPageClicked);
+
+            var linkToSignIn = buttonFactory.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInPageClicked);   
 
             var contentLayout = new StackLayout
             {
@@ -59,8 +57,8 @@ namespace EixemX.Pages.Guest
 
         protected override void OnAppearing()
         { 
-            NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

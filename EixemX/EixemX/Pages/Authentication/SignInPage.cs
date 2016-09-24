@@ -14,19 +14,15 @@ namespace EixemX.Pages.Authentication
     public class SignInPage : ModelBoundContentPage<SignInViewModel>
     {
         public SignInPage()
-        { 
-            BindingContext = new SignInViewModel
-            { 
-                Navigation = this.Navigation
-            };
+        {
+            BindingContext = new SignInViewModel(Navigation);
 
             Content = CreatePage();
         }
 
         private Layout CreatePage()
         {
-            var linkToAuthentication = buttonFactory.TransparentDefault(TextResources.Button_SignIn);
-            linkToAuthentication.Released += ViewModel.SignInClicked;
+            var linkToAuthentication = buttonFactory.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInClicked); 
 
             var emailEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Email);
             emailEntry.SetBinding(Entry.TextProperty, "Username", BindingMode.TwoWay);
@@ -34,15 +30,13 @@ namespace EixemX.Pages.Authentication
             var passwordEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Password); 
             passwordEntry.IsPassword = true;
             passwordEntry.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
-
+            
             var messageLabel = labelFactory.LabelMessage();
             messageLabel.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
 
             var linkToPasswordForget = labelFactory.HyperLinkLabel();
-            //AbsoluteLayout titleLayout = layoutFactory.TitleLayout(TextResources.Registration_Title, TextResources.Registration_TitleBar);
 
-            ImageButton backArrowButton = buttonFactory.ArrowLeft();
-            backArrowButton.Clicked += ViewModel.BackClicked;
+            ImageButton backArrowButton = buttonFactory.ArrowLeft(ViewModel.BackButtonClicked); 
 
             AbsoluteLayout titleLayout = layoutFactory.TitleLayout(imageFactory.WhiteLogoSmall(), backArrowButton);
               

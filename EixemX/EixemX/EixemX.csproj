@@ -59,11 +59,15 @@
     <Compile Include="Controls\Navigations\DefaultNavigationPage.cs" />
     <Compile Include="Controls\Menus\HomeMenuItem.cs" />
     <Compile Include="Controls\Menus\MenuType.cs" />
+    <Compile Include="Pages\Authentication\RegistrationPasswordConfirmPage.cs" />
+    <Compile Include="Pages\Authentication\RegistrationPasswordPage.cs" />
     <Compile Include="Services\Authentication\AuthenticationDemoService.cs" />
     <Compile Include="Services\Authentication\AuthenticationService.cs" />
     <Compile Include="Services\Authentication\IAuthenticationService.cs" />
     <Compile Include="Services\Authentication\IAuthenticator.cs" />
     <Compile Include="Services\Config\IConfigFetcher.cs" />
+    <Compile Include="ViewModels\Authentication\RegistrationPasswordConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\RegistrationPasswordViewModel.cs" />
     <Compile Include="ViewModels\Authentication\RegistrationViewModel.cs" />
     <Compile Include="Pages\Authentication\SignInPage.cs" />
     <Compile Include="ViewModels\Authentication\SignInViewModel.cs" />

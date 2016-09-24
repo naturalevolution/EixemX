@@ -20,6 +20,7 @@ namespace EixemX.Constants
         public const double FontSizeMediumButton = 25;
         public const double FontSize = 35;
         public const double FontSizeEntry = 27;
+        public const double FontSizeM = 20;
         public const double FontSizeSmall = 17;
         public const double FontSizeXS = 15;
 

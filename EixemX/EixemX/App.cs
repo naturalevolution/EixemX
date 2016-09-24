@@ -40,10 +40,8 @@ namespace EixemX
             // If the App.IsAuthenticated property is false, modally present the SplashPage.
             if (!_AuthenticationService.IsAuthenticated)
             {
-                NavigationPage.SetHasNavigationBar(this, false);
                 MainPage = new DefaultNavigationPage(new WelcomePage());
-                //MainPage = new WelcomePage();
-                 
+                NavigationPage.SetHasNavigationBar(this, false); 
             }
             else
             {

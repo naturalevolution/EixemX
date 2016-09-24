@@ -1,4 +1,5 @@
-﻿using EixemX.Constants;
+﻿using System;
+using EixemX.Constants;
 using EixemX.Factories;
 using Xamarin.Forms;
 using XLabs.Forms.Behaviors;
@@ -51,32 +52,6 @@ namespace EixemX.Factories
                 Constraint.RelativeToParent(parent => { return parent.Height; }));
 
             return layout;
-        }
-
-        public AbsoluteLayout TitleLayout(string text, string titleBar)
-        {
-            var result = new AbsoluteLayout
-            {
-                BackgroundColor = Palette.Transparent,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-            }; 
-
-            Label labelTitle = LabelFactory.Title(text); 
-            AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(labelTitle, AbsoluteLayoutFlags.PositionProportional);
-
-            var buttonBackArrow = ButtonFactory.ArrowLeft();
-            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(buttonBackArrow, AbsoluteLayoutFlags.PositionProportional);
-
-            var barTop =ButtonFactory.BarWithButtonTitle(titleBar);
-             
-            result.Children.Add(buttonBackArrow);
-            result.Children.Add(barTop);
-            result.Children.Add(labelTitle);
-
-            return result;
         }
 
         public AbsoluteLayout TitleLayout(Image image, ImageButton backButton)
@@ -132,14 +107,57 @@ namespace EixemX.Factories
             }
             return result;
         }
+
+        public AbsoluteLayout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton,
+            EventHandler eventBarButton = null)
+        {
+            var result = GenerateTitleLayout(text, titleBar, eventBackButton, eventBarButton, false);
+
+            return result;
+        }
+
+        public AbsoluteLayout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null)
+        {
+            var result = GenerateTitleLayout(text, titleBar, eventBackButton, eventBarButton, true);
+
+            return result; 
+        }
+
+        private AbsoluteLayout GenerateTitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton, bool isUpper)
+        {
+            var result = new AbsoluteLayout
+            {
+                BackgroundColor = Palette.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+            };
+
+            Label labelTitle = LabelFactory.Title(text, isUpper);
+            AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(labelTitle, AbsoluteLayoutFlags.PositionProportional);
+
+            var buttonBackArrow = ButtonFactory.ArrowLeft(eventBackButton);
+            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(buttonBackArrow, AbsoluteLayoutFlags.PositionProportional); 
+
+            var barTop = ButtonFactory.BarWithButtonTitle(titleBar, eventBarButton ?? eventBackButton);
+
+            result.Children.Add(buttonBackArrow);
+            result.Children.Add(barTop);
+            result.Children.Add(labelTitle);
+
+            return result;
+        }
     }
 
     public interface ILayoutFactory
     {
         RelativeLayout LayoutWithBackground(View view);
-        AbsoluteLayout TitleLayout(string text, string titleBar);
+        AbsoluteLayout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
         AbsoluteLayout TitleLayout(Image image, ImageButton backButton);
         StackLayout LayoutFields(params View[] views);
         StackLayout LayoutButtons(params View[] views);
+        AbsoluteLayout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
+        //, EventHandler<EventArgs> backButtonClicked);
     }
 }

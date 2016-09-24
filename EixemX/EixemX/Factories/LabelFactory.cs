@@ -20,12 +20,12 @@ namespace EixemX.Factories
                     };
         }
 
-        public Label Title(string text)
+        public Label Title(string text, bool isUpper)
         { 
             var result = new Label
             {
                 TextColor = Color.White,
-                FontSize = PaletteText.FontSizeSmall, 
+                FontSize = PaletteText.FontSizeM, 
                 HorizontalTextAlignment = TextAlignment.Center,
                 Text = text
             };
@@ -48,7 +48,7 @@ namespace EixemX.Factories
     public interface ILabelFactory
     {
         Label LabelMessage(); 
-        Label Title(string text);
+        Label Title(string text, bool isUpper);
         HyperLinkLabel HyperLinkLabel();
     }
 }

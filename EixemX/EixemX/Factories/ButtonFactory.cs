@@ -9,18 +9,18 @@ using XLabs.Forms.Controls;
 namespace EixemX.Factories
 {
     public interface IButtonFactory
-    {
-        CustomButton TransparentDefault(string text);
-        CustomButton WhiteDefault(string text); 
+    { 
+        CustomButton WhiteDefault(string text, EventHandler eventClicked); 
         void SetToDefault(Button element, ButtonStyle buttonStyle);
-        CustomButton WhiteDefaultBar(string text);
-        AbsoluteLayout BarWithButtonTitle(string text);
-        ImageButton ArrowLeft();
+        CustomButton WhiteDefaultBar(string text, EventHandler eventClicked); 
+        ImageButton ArrowLeft(EventHandler eventClicked);
+        AbsoluteLayout BarWithButtonTitle(string titleBar, EventHandler eventBarBarButton);
+        CustomButton TransparentDefault(string text, EventHandler eventClicked);
     }
 
     public class ButtonFactory : IButtonFactory
     {
-        public CustomButton TransparentDefault(string text)
+        public CustomButton TransparentDefault(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
             {
@@ -42,6 +42,7 @@ namespace EixemX.Factories
                 element.BackgroundColor = Palette.White;
                 element.TextColor = Palette.Green;  
             };
+            result.Released += eventClicked;
             return result;
         }
 
@@ -62,7 +63,7 @@ namespace EixemX.Factories
         }
 
 
-        public CustomButton WhiteDefault(string text)
+        public CustomButton WhiteDefault(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
             {
@@ -84,9 +85,10 @@ namespace EixemX.Factories
                 element.BackgroundColor = Palette.Transparent;
                 element.TextColor = Palette.White;
             };
+            result.Released += eventClicked;
             return result;
         }
-        public CustomButton WhiteDefaultBar(string text)
+        public CustomButton WhiteDefaultBar(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
             {
@@ -100,11 +102,12 @@ namespace EixemX.Factories
                 FontSize = PaletteText.FontSizeMediumButton,
                 TextColor = Palette.Green
             };
+            result.Released += eventClicked;
             return result;
         }
          
 
-        public AbsoluteLayout BarWithButtonTitle(string text)
+        public AbsoluteLayout BarWithButtonTitle(string text, EventHandler eventBarButton)
         { 
             var result = new AbsoluteLayout
             {
@@ -134,8 +137,10 @@ namespace EixemX.Factories
                 TextColor = Palette.Green,
                 BackgroundColor = Palette.White,
                 BorderRadius = 20,
-                HeightRequest = 40
-            };
+                HeightRequest = 40 ,
+                ImageTintColor = Palette.White
+            }; 
+            buttonBack.Clicked += eventBarButton;
             AbsoluteLayout.SetLayoutBounds(buttonBack, new Rectangle(0, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(buttonBack, AbsoluteLayoutFlags.PositionProportional);
 
@@ -150,13 +155,15 @@ namespace EixemX.Factories
         }
 
         private const string ArrowLeftPicture = "left_arrow.png";
-        public ImageButton ArrowLeft()
+        public ImageButton ArrowLeft(EventHandler eventClicked)
         {
-            return new ImageButton
+            var result = new ImageButton
             {
                 Source = ImageSource.FromFile(ArrowLeftPicture),
                 BackgroundColor = Palette.Transparent
             };
+            result.Clicked += eventClicked;
+            return result;
         }
     }
 

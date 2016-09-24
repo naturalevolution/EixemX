@@ -1,47 +1,37 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using EixemX.Extensions;
 using EixemX.Factories;
 using EixemX.Helpers.Constants;
 using EixemX.Localization;
-using EixemX.Pages.Guest;
 using EixemX.ViewModels.Base;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin.Forms;
+using XLabs.Forms.Mvvm;
 
 namespace EixemX.ViewModels.Authentication
 {
-    public class SignInViewModel : BaseViewModel
+    public class RegistrationPasswordConfirmViewModel : BaseViewModel
     {
-        private string _password;
-
-        private string _username;
-
-        public SignInViewModel(INavigation navigation)
-            : base(navigation)
+        public RegistrationPasswordConfirmViewModel(INavigation navigation) :base(navigation)
         {
+            
         }
-         
-        public string Username
+        private string _confirmPassword;
+
+        public string ConfirmPassword
         {
-            get { return _username; }
-            set { SetProperty(ref _username, value, "Username"); }
-        }
-         
-        public string Password
-        {
-            get { return _password; }
+            get { return _confirmPassword; }
             set
             {
-                _password = value;
-                 SetProperty(ref _username, value, "Password"); 
-                //OnPropertyChanged("Password");
+                _confirmPassword = value;
+                SetProperty(ref _confirmPassword, value, "ConfirmPassword");
             }
         }
-         
-        public async void SignInClicked(object sender, EventArgs e)
-        {
+
+        public async void NextClicked(object sender, EventArgs e)
+        { 
+            LogDebug("NextClicked");
             await App.ExecuteIfConnectedToInternet(async () =>
             {
                 // ViewModel.ShowSpinner = true;
@@ -50,20 +40,14 @@ namespace EixemX.ViewModels.Authentication
                 {
                     App.GoToRoot();
 
-                    MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
+                    MessagingCenter.Send(this, MessagingServiceConstants.REGISTERED);
                 }
                 else
                 {
-                    DisplayMessage = TextResources.Alert_Authentication_Credential;
+                    DisplayMessage = TextResources.Alert_Registration_Retry;
                 }
             });
             buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
-        } 
-
-        public async Task LoadDemoCredentials()
-        {
-            Username = await configFetcher.GetAsync("azureActiveDirectoryUsername", true);
-            Password = await configFetcher.GetAsync("azureActiveDirectoryPassword", true);
         }
 
         private async Task<bool> Authenticate()
@@ -73,7 +57,7 @@ namespace EixemX.ViewModels.Authentication
             {
                 DisplayMessage = TextResources.Alert_Authentication_InProgress;
 
-                success = await authenticationService.AuthenticateAsync(Username, Password);
+                success = await authenticationService.AuthenticateAsync(ConfirmPassword, ConfirmPassword);
             }
             catch (Exception ex)
             {
@@ -83,14 +67,14 @@ namespace EixemX.ViewModels.Authentication
             finally
             {
                 //ViewModel.ShowSpinner = false;
-            } 
+            }
             return success;
         }
-         
+
         public async void BackButtonClicked(object sender, EventArgs e)
         {
             LogDebug("BackButtonClicked");
             await PopAsync();
-        }
+        } 
     }
 }

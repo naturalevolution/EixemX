@@ -2,6 +2,6 @@
 {
     public enum MenuType
     {
-        Home = 0
+        Dashboard = 0
     }
 }

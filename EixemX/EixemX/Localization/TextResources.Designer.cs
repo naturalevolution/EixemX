@@ -62,11 +62,38 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date de naissance.
+        /// </summary>
+        internal static string Account_Field_Birthday {
+            get {
+                return ResourceManager.GetString("Account_Field_Birthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adresse mail.
         /// </summary>
         internal static string Account_Field_Email {
             get {
                 return ResourceManager.GetString("Account_Field_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prénom.
+        /// </summary>
+        internal static string Account_Field_Firstname {
+            get {
+                return ResourceManager.GetString("Account_Field_Firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom.
+        /// </summary>
+        internal static string Account_Field_Lastname {
+            get {
+                return ResourceManager.GetString("Account_Field_Lastname", resourceCulture);
             }
         }
         
@@ -134,6 +161,15 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vérifier vos informations.
+        /// </summary>
+        internal static string Alert_Registration_Retry {
+            get {
+                return ResourceManager.GetString("Alert_Registration_Retry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour.
         /// </summary>
         internal static string Button_Back {
@@ -179,6 +215,15 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continuer.
+        /// </summary>
+        internal static string Button_Next {
+            get {
+                return ResourceManager.GetString("Button_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Button_OK {
@@ -211,6 +256,33 @@ namespace EixemX.Localization {
         internal static string Button_SignIn {
             get {
                 return ResourceManager.GetString("Button_SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation du mot de passe.
+        /// </summary>
+        internal static string Registration_ConfirmSecret {
+            get {
+                return ResourceManager.GetString("Registration_ConfirmSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saisie du mot de passe.
+        /// </summary>
+        internal static string Registration_PasswordTitle {
+            get {
+                return ResourceManager.GetString("Registration_PasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code secret.
+        /// </summary>
+        internal static string Registration_Secret {
+            get {
+                return ResourceManager.GetString("Registration_Secret", resourceCulture);
             }
         }
         

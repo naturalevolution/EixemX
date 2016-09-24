@@ -6,7 +6,7 @@ namespace EixemX.Controls.Menus
     {
         public HomeMenuItem()
         {
-            MenuType = MenuType.Home;
+            MenuType = MenuType.Dashboard;
         }
 
         public string Icon { get; set; }

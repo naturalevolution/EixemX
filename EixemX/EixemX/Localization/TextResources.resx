@@ -174,4 +174,28 @@
   <data name="Registration_TitleBar" xml:space="preserve">
     <value>Personnel</value>
   </data>
+  <data name="Button_Next" xml:space="preserve">
+    <value>Continuer</value>
+  </data>
+  <data name="Account_Field_Birthday" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="Account_Field_Firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Account_Field_Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Registration_ConfirmSecret" xml:space="preserve">
+    <value>Confirmation du mot de passe</value>
+  </data>
+  <data name="Registration_PasswordTitle" xml:space="preserve">
+    <value>Saisie du mot de passe</value>
+  </data>
+  <data name="Registration_Secret" xml:space="preserve">
+    <value>Code secret</value>
+  </data>
+  <data name="Alert_Registration_Retry" xml:space="preserve">
+    <value>Vérifier vos informations</value>
+  </data>
 </root>

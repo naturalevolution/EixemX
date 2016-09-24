@@ -54,7 +54,6 @@ namespace EixemX.ViewModels.Base
 
         private string title = string.Empty;
         private string _displayMessage;
-
          
 
         public BaseViewModel(INavigation navigation = null)
@@ -179,6 +178,11 @@ namespace EixemX.ViewModels.Base
                 return;
 
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+         
+        protected void LogDebug(string message)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format(">>>>>> DEBUG : {0} : {1}",message,GetType().FullName));
         }
     }
 }
