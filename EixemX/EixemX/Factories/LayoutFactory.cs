@@ -133,11 +133,11 @@ namespace EixemX.Factories
             };
 
             Label labelTitle = LabelFactory.Title(text);
-            AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(labelTitle, AbsoluteLayoutFlags.PositionProportional);
 
             var buttonBackArrow = ButtonFactory.ArrowLeft(eventBackButton);
-            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(buttonBackArrow, AbsoluteLayoutFlags.PositionProportional); 
 
             var barTop = ButtonFactory.BarWithButtonTitle(titleBar, eventBarButton ?? eventBackButton);
