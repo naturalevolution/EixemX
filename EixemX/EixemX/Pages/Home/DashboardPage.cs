@@ -1,4 +1,5 @@
-﻿using EixemX.Helpers.Constants;
+﻿using EixemX.Factories;
+using EixemX.Helpers.Constants;
 using EixemX.Pages.Authentication;
 using EixemX.Pages.Base;
 using EixemX.ViewModels.Authentication;
@@ -30,7 +31,7 @@ namespace EixemX.Pages.Home
                 TextColor = Color.White
             };
 
-            var result = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+            var result = ComponentFactories.Layouts.ContentWithNavigation(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);
 

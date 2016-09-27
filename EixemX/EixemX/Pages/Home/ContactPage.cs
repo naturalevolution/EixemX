@@ -1,4 +1,5 @@
-﻿using EixemX.Helpers.Constants;
+﻿using EixemX.Factories;
+using EixemX.Helpers.Constants;
 using EixemX.Pages.Base;
 using EixemX.Pages.Menus;
 using EixemX.ViewModels.Home;
@@ -19,7 +20,7 @@ namespace EixemX.Pages.Home
                 TextColor = Color.White
             };
 
-            Content = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+            Content = ComponentFactories.Layouts.ContentWithNavigation(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);
         } 

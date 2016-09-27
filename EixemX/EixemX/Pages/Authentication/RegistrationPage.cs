@@ -1,4 +1,5 @@
-﻿using EixemX.Localization;
+﻿using EixemX.Factories;
+using EixemX.Localization;
 using EixemX.Pages.Base;
 using EixemX.ViewModels.Authentication;
 using Xamarin.Forms;
@@ -16,26 +17,26 @@ namespace EixemX.Pages.Authentication
 
         public Layout CreatePage()
         {
-            var titleLayout = layoutFactory.TitleLayout(TextResources.Registration_Title,
+            var titleLayout = ComponentFactories.Layouts.TitleLayout(TextResources.Registration_Title,
                 TextResources.Registration_TitleBar, ViewModel.BackButtonClicked, ViewModel.BackBarButtonClicked);
 
-            var lastnameEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Lastname);
+            var lastnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Lastname);
             lastnameEntry.SetBinding(Entry.TextProperty, "Model.Lastname", BindingMode.TwoWay); 
 
-            var firstnameEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Firstname);
+            var firstnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Firstname);
             firstnameEntry.SetBinding(Entry.TextProperty, "Model.Firstname", BindingMode.TwoWay); 
 
-            var birthdayEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Birthday);
+            var birthdayEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Birthday);
             birthdayEntry.SetBinding(Entry.TextProperty, "Model.Birthday", BindingMode.TwoWay); 
 
-            var emailEntry = entryFactory.EntryDefaultEmail(TextResources.Account_Field_Email);
+            var emailEntry = ComponentFactories.Entries.EntryDefaultEmail(TextResources.Account_Field_Email);
             emailEntry.SetBinding(Entry.TextProperty, "Model.Email", BindingMode.TwoWay);
 
-            var fieldsLayout = layoutFactory.LayoutFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
+            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
 
-            var linkToNext = buttonFactory.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
+            var linkToNext = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
 
-            var buttonsLayout = layoutFactory.LayoutButtons(linkToNext);
+            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToNext);
              
             var content = new StackLayout
             {
@@ -49,7 +50,7 @@ namespace EixemX.Pages.Authentication
                     buttonsLayout
                 }
             };
-            return layoutFactory.LayoutWithBackground(content);
+            return ComponentFactories.Layouts.LayoutWithBackground(content);
         } 
     }
 }

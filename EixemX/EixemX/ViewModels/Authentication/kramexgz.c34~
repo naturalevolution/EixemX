@@ -84,8 +84,7 @@ namespace EixemX.ViewModels.Authentication
                     DisplayMessage = TextResources.Alert_Authentication_Credential;
                 }
             });
-
-            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
+            Factories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
         } 
 
         public async Task LoadDemoCredentials()

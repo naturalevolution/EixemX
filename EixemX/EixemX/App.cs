@@ -29,7 +29,7 @@ namespace EixemX
         {
             app = this;
 
-            RegisterDependencies();
+            RegisterDependencies(); 
 
             /* if we were targeting Windows Phone, we'd want to include the next line. */
             // if (Device.OS != TargetPlatform.WinPhone) 
@@ -48,7 +48,7 @@ namespace EixemX
             }
             NavigationPage.SetHasNavigationBar(this, false);
         }
-
+         
         private void RegisterDependencies()
         {
             DependencyService.Register<AuthenticationDemoService>();

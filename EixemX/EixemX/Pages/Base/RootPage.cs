@@ -42,8 +42,7 @@ namespace EixemX.Pages.Base
         }
 
         public async Task NavigateAsync(MenuType id)
-        {
-            var imageFactory = DependencyService.Get<IImageFactory>();
+        { 
             DefaultNavigationPage newPage = null;
             if (!Pages.TryGetValue(id, out newPage)) {
                 DefaultNavigationPage page = null;
@@ -52,63 +51,63 @@ namespace EixemX.Pages.Base
                     case MenuType.Dashboard:
                         page = new DefaultNavigationPage(new DashboardPage
                         {
-                            Icon = imageFactory.GreenLogoFileImage()
+                            Icon = ComponentFactories.Images.GreenLogoFileImage()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.History:
                         page = new DefaultNavigationPage(new HistoryPage
                         {
-                            Icon = imageFactory.HistoryPageIcon()
+                            Icon = ComponentFactories.Images.HistoryPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Emprunter:
                         page = new DefaultNavigationPage(new EmprunterPage
                         {
-                            Icon = imageFactory.EmprunterPageIcon()
+                            Icon = ComponentFactories.Images.EmprunterPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Preter:
                         page = new DefaultNavigationPage(new PreterPage
                         {
-                            Icon = imageFactory.PreterPageIcon()
+                            Icon = ComponentFactories.Images.PreterPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Payer:
                         page = new DefaultNavigationPage(new PayerPage
                         {
-                            Icon = imageFactory.PayerPageIcon()
+                            Icon = ComponentFactories.Images.PayerPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Retirer:
                         page = new DefaultNavigationPage(new RetirerPage
                         {
-                            Icon = imageFactory.RetirerPageIcon()
+                            Icon = ComponentFactories.Images.RetirerPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.About:
                         page = new DefaultNavigationPage(new AboutPage
                         {
-                            Icon = imageFactory.AboutPageIcon()
+                            Icon = ComponentFactories.Images.AboutPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Contact:
                         page = new DefaultNavigationPage(new ContactPage
                         {
-                            Icon = imageFactory.ContactPageIcon()
+                            Icon = ComponentFactories.Images.ContactPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Professional:
                         page = new DefaultNavigationPage(new ProfessionalPage
                         {
-                            Icon = imageFactory.ProfessionalPageIcon()
+                            Icon = ComponentFactories.Images.ProfessionalPageIcon()
                         });
                         AddPageToDictionnary(id, page);
                         break; 

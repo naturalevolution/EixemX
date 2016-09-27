@@ -8,28 +8,7 @@ namespace EixemX.Pages.Base
     /// A generically typed ContentPage that enforces the type of its BindingContext according to TViewModel.
     /// </summary>
     public abstract class ModelBoundContentPage<TViewModel> : ContentPage where TViewModel : BaseViewModel
-    {
-
-        protected IButtonFactory buttonFactory;
-        protected ILayoutFactory layoutFactory;
-        protected IImageFactory imageFactory;
-        protected IStyleFactory styleFactory;
-        protected IEventFactory eventFactory;
-        protected IEntryFactory entryFactory;
-        protected ILabelFactory labelFactory;
-
-        protected ModelBoundContentPage()
-        {
-            buttonFactory = DependencyService.Get<IButtonFactory>();
-            imageFactory = DependencyService.Get<IImageFactory>();
-            layoutFactory = DependencyService.Get<ILayoutFactory>();
-            styleFactory = DependencyService.Get<IStyleFactory>();
-            eventFactory = DependencyService.Get<IEventFactory>();
-            entryFactory = DependencyService.Get<IEntryFactory>();
-            labelFactory = DependencyService.Get<ILabelFactory>();
-        }
-
-
+    {  
         /// <summary>
         /// Gets the generically typed ViewModel from the underlying BindingContext.
         /// </summary>
@@ -60,7 +39,7 @@ namespace EixemX.Pages.Base
 
         protected Label GetMessageLabel()
         { 
-            var result = labelFactory.LabelMessage();
+            var result = ComponentFactories.Labels.LabelMessage();
             result.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
             return result;
         }

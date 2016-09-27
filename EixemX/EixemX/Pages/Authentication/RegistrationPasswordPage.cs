@@ -1,4 +1,5 @@
-﻿using EixemX.Localization;
+﻿using EixemX.Factories;
+using EixemX.Localization;
 using EixemX.Pages.Base;
 using EixemX.Services.Account;
 using EixemX.ViewModels.Authentication;
@@ -19,17 +20,17 @@ namespace EixemX.Pages.Authentication
 
         public Layout CreatePage()
         {
-            var titleLayout = layoutFactory.TitleLayoutLower(TextResources.Registration_PasswordTitle,
+            var titleLayout = ComponentFactories.Layouts.TitleLayoutLower(TextResources.Registration_PasswordTitle,
                 TextResources.Registration_Secret, ViewModel.BackButtonClicked);
 
-            var passwordEntry = entryFactory.EntryPlainPassword(string.Empty);
+            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty);
             passwordEntry.SetBinding(Entry.TextProperty, "Model.Password", BindingMode.TwoWay);
 
-            var fieldsLayout = layoutFactory.LayoutFields(GetMessageLabel(), passwordEntry);
+            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(GetMessageLabel(), passwordEntry);
 
-            var linkToNext = buttonFactory.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
+            var linkToNext = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
 
-            var buttonsLayout = layoutFactory.LayoutButtons(linkToNext);
+            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToNext);
 
             var content = new StackLayout
             {
@@ -43,7 +44,7 @@ namespace EixemX.Pages.Authentication
                     buttonsLayout
                 }
             };
-            return layoutFactory.LayoutWithBackground(content);
+            return ComponentFactories.Layouts.LayoutWithBackground(content);
         } 
     }
 }

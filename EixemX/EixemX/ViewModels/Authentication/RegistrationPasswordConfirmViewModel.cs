@@ -48,7 +48,7 @@ namespace EixemX.ViewModels.Authentication
                     DisplayMessage = Model.GetErrorMessage();
                 }
             });
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
         }
 
         private async Task<bool> RegisterAndAuthenticate()

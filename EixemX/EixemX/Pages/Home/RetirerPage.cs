@@ -18,7 +18,7 @@ namespace EixemX.Pages.Home
                 TextColor = Color.White
             };
 
-            Content = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+            Content = ComponentFactories.Layouts.ContentWithNavigation(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);
         }

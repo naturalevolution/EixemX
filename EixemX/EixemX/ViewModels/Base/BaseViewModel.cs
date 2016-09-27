@@ -59,15 +59,12 @@ namespace EixemX.ViewModels.Base
         {
             Navigation = navigation;
             configFetcher = DependencyService.Get<IConfigFetcher>();
-            authenticationService = DependencyService.Get<IAuthenticationService>();
-            buttonFactory = DependencyService.Get<IButtonFactory>();
+            authenticationService = DependencyService.Get<IAuthenticationService>(); 
         }
 
         public BaseViewModel() : this(null)
         { 
-        }
-
-        protected IButtonFactory buttonFactory;
+        } 
 
         public INavigation Navigation { get; set; }
 

@@ -18,7 +18,7 @@ namespace EixemX.ViewModels.Guest
             LogDebug("SignInPageClicked");
            // await Navigation.PushAsync(new SignInPage());
             await PushAsync(new SignInPage());
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
         }
 
         public async void RegistrationPageClicked(object sender, EventArgs eventArgs)
@@ -26,7 +26,7 @@ namespace EixemX.ViewModels.Guest
             LogDebug("RegistrationPageClicked");
             // await Navigation.PushAsync(new RegistrationPage());
             await PushAsync(new RegistrationPage());
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.White);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.White);
         }
     }
 }

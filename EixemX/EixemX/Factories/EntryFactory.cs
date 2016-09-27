@@ -10,7 +10,7 @@ namespace EixemX.Factories
     public class EntryFactory : IEntryFactory
     {
         public CustomEntry EntryDefaultText(string text, FontType fontType)
-        { 
+        {
             return GenerateEntryDefault(text, fontType, Keyboard.Text);
         }
 

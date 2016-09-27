@@ -29,7 +29,7 @@ namespace EixemX.ViewModels.Authentication
             {
                 DisplayMessage = Model.GetErrorMessage();
             }
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
         } 
 
         public async void BackButtonClicked(object sender, EventArgs e)

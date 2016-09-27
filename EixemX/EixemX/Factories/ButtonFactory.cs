@@ -3,7 +3,6 @@ using System.Diagnostics;
 using EixemX.Constants;
 using EixemX.Controls.Buttons;
 using EixemX.Factories;
-using EixemX.Localization;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
@@ -28,13 +27,7 @@ namespace EixemX.Factories
     public class ButtonFactory : IButtonFactory
     {
         private const string ArrowLeftPicture = "left_arrow.png"; 
-        IImageFactory imageFactory; 
-
-        public ButtonFactory()
-        {
-            imageFactory = DependencyService.Get<IImageFactory>();
-        }
-
+         
         public CustomButton TransparentDefault(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
@@ -61,6 +54,7 @@ namespace EixemX.Factories
             result.Released += eventClicked;
             return result;
         }
+
         public void SetToDefault(Button element, ButtonStyle buttonStyle)
         {
             Debug.WriteLine("SetToDefault");
@@ -191,18 +185,18 @@ namespace EixemX.Factories
 
         public Image NavigationMenu(EventHandler eventClicked)
         {
-            Image image = imageFactory.NavigationMenu(); 
+            var image = ComponentFactories.Images.NavigationMenu();
             image.Aspect = Aspect.AspectFit;
             image.HeightRequest = 30;
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += eventClicked;
-            image.GestureRecognizers.Add(tapGestureRecognizer); 
+            image.GestureRecognizers.Add(tapGestureRecognizer);
             return image;
         }
 
         public Image NavigationAccount(EventHandler eventClicked)
         {
-            Image image = imageFactory.NavigationAccount();
+            var image = ComponentFactories.Images.NavigationAccount();
             image.Aspect = Aspect.AspectFit;
             image.HeightRequest = 40;
             var tapGestureRecognizer = new TapGestureRecognizer();
@@ -213,7 +207,7 @@ namespace EixemX.Factories
 
         public Image NavigationLogo(EventHandler eventClicked)
         {
-            Image image = imageFactory.NavigationLogo();
+            var image = ComponentFactories.Images.NavigationLogo();
             image.Aspect = Aspect.AspectFit;
             image.HeightRequest = 20;
             var tapGestureRecognizer = new TapGestureRecognizer();
@@ -228,9 +222,9 @@ namespace EixemX.Factories
             {
                 Text = text,
                 FontSize = PaletteText.FontSizeSmall,
-                TextColor = Palette.White, 
+                TextColor = Palette.White,
                 FontAttributes = FontAttributes.None,
-                BackgroundColor = Palette.Transparent 
+                BackgroundColor = Palette.Transparent
             };
             result.Released += eventClicked;
             return result;

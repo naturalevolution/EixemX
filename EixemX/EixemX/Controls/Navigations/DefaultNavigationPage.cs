@@ -6,33 +6,24 @@ using Xamarin.Forms;
 namespace EixemX.Controls.Navigations
 {
     public class DefaultNavigationPage : NavigationPage
-    {
-        private Page _root;
+    { 
         public DefaultNavigationPage(Page root)
             : base(root)
         {
-            Init(root);
+            Init();
         }
 
         public DefaultNavigationPage()
         {
-            Init(null);
+            Init();
         }
 
-        void Init(Page root)
-        {
-            _root = root;
-            var imageFactory = DependencyService.Get<IImageFactory>();
-
+        void Init()
+        {  
             BarBackgroundColor = Palette.White;
             BarTextColor = Palette.Green;
             BackgroundColor = Color.Black;
-            Icon = imageFactory.NavigationIcon();
-            if (_root != null)
-            {
-                SetHasNavigationBar(_root, false);
-                SetHasNavigationBar(this, false);
-            }
+            Icon = ComponentFactories.Images.NavigationIcon(); 
         }
     }
 }

@@ -22,27 +22,27 @@ namespace EixemX.Pages.Authentication
 
         private Layout CreatePage()
         {
-            var linkToAuthentication = buttonFactory.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInClicked); 
+            var linkToAuthentication = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInClicked); 
 
-            var emailEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Email);
+            var emailEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Email);
             emailEntry.SetBinding(Entry.TextProperty, "Username", BindingMode.TwoWay);
              
-            var passwordEntry = entryFactory.EntryDefaultText(TextResources.Account_Field_Password); 
+            var passwordEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Password); 
             passwordEntry.IsPassword = true;
             passwordEntry.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
             
-            var messageLabel = labelFactory.LabelMessage();
+            var messageLabel = ComponentFactories.Labels.LabelMessage();
             messageLabel.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
 
-            var linkToPasswordForget = buttonFactory.Link(TextResources.Account_Link_PasswordForget, ViewModel.PasswordForgetClicked);
+            var linkToPasswordForget = ComponentFactories.Buttons.Link(TextResources.Account_Link_PasswordForget, ViewModel.PasswordForgetClicked);
                 
-            var backArrowButton = buttonFactory.ArrowLeft(ViewModel.BackButtonClicked);
+            var backArrowButton = ComponentFactories.Buttons.ArrowLeft(ViewModel.BackButtonClicked);
 
-            var titleLayout = layoutFactory.TitleLayout(imageFactory.WhiteLogoSmall(), backArrowButton);
+            var titleLayout = ComponentFactories.Layouts.TitleLayout(ComponentFactories.Images.WhiteLogoSmall(), backArrowButton);
 
-            var fieldsLayout = layoutFactory.LayoutFields(messageLabel, emailEntry, passwordEntry);
+            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(messageLabel, emailEntry, passwordEntry);
 
-            var buttonsLayout = layoutFactory.LayoutButtons(linkToPasswordForget, linkToAuthentication);
+            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToPasswordForget, linkToAuthentication);
 
 
             var content = new StackLayout
@@ -57,7 +57,7 @@ namespace EixemX.Pages.Authentication
                     buttonsLayout
                 }
             }; 
-            return layoutFactory.LayoutWithBackground(content);
+            return ComponentFactories.Layouts.LayoutWithBackground(content);
         }
 
         protected override async void OnAppearing()

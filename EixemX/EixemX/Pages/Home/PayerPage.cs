@@ -1,4 +1,5 @@
-﻿using EixemX.Helpers.Constants;
+﻿using EixemX.Factories;
+using EixemX.Helpers.Constants;
 using EixemX.Pages.Base;
 using EixemX.ViewModels.Home;
 using Xamarin.Forms;
@@ -18,7 +19,7 @@ namespace EixemX.Pages.Home
             };
 
 
-            Content = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+            Content = ComponentFactories.Layouts.ContentWithNavigation(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);
         }

@@ -40,13 +40,12 @@
     <Compile Include="Controls\Entries\CustomEntry.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Factories\EntryFactory.cs" />
-    <Compile Include="Factories\EventFactory.cs" />
     <Compile Include="Factories\ButtonFactory.cs" />
     <Compile Include="Controls\Buttons\CustomButton.cs" />
+    <Compile Include="Factories\ComponentFactories.cs" />
     <Compile Include="Factories\ImageFactory.cs" />
     <Compile Include="Factories\LabelFactory.cs" />
     <Compile Include="Factories\LayoutFactory.cs" />
-    <Compile Include="Factories\StyleFactory.cs" />
     <Compile Include="Helpers\Constants\MessagingServiceConstants.cs" />
     <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">

@@ -1,5 +1,4 @@
-﻿using System;
-using EixemX.Factories;
+﻿using EixemX.Factories;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ImageFactory))]
@@ -75,7 +74,7 @@ namespace EixemX.Factories
 
         public FileImageSource ContactPageIcon()
         {
-            return new FileImageSource { File = IconContact };
+            return new FileImageSource {File = IconContact};
         }
 
         public Image NavigationLogo()
@@ -128,7 +127,7 @@ namespace EixemX.Factories
     }
 
     public interface IImageFactory
-    { 
+    {
         Image WhiteLogo();
         Image WhiteLogoSmall();
         FileImageSource GreenLogoFileImage();

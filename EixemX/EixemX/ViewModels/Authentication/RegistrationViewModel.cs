@@ -37,7 +37,7 @@ namespace EixemX.ViewModels.Authentication
             {
                 DisplayMessage = Model.GetErrorMessage();
             }
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.Transparent);
         }
 
 
@@ -51,7 +51,7 @@ namespace EixemX.ViewModels.Authentication
         {
             LogDebug("BackBarButtonClicked");
             await PopAsync();
-            buttonFactory.SetToDefault(sender as Button, ButtonStyle.White);
+            ComponentFactories.Buttons.SetToDefault(sender as Button, ButtonStyle.White);
         }
     }
 }

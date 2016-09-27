@@ -21,9 +21,9 @@ namespace EixemX.Pages.Guest
 
         private Layout CreateLayout()
         {
-            var linkToRegistration = buttonFactory.WhiteDefault(TextResources.Button_Registration, ViewModel.RegistrationPageClicked);
+            var linkToRegistration = ComponentFactories.Buttons.WhiteDefault(TextResources.Button_Registration, ViewModel.RegistrationPageClicked);
 
-            var linkToSignIn = buttonFactory.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInPageClicked);   
+            var linkToSignIn = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInPageClicked);   
 
             var contentLayout = new StackLayout
             {
@@ -34,7 +34,7 @@ namespace EixemX.Pages.Guest
                 BackgroundColor = Color.Transparent,
                 Children =
                 {
-                    imageFactory.WhiteLogo(),
+                    ComponentFactories.Images.WhiteLogo(),
                     new StackLayout
                     {
                         VerticalOptions = LayoutOptions.End,
@@ -49,7 +49,7 @@ namespace EixemX.Pages.Guest
                     }
                 }
             };
-            return layoutFactory.LayoutWithBackground(contentLayout);
+            return ComponentFactories.Layouts.LayoutWithBackground(contentLayout);
         }
          
     }
