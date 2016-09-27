@@ -16,10 +16,9 @@ namespace EixemX.Pages.Home
             var label = new Label
             {
                 Text = "PreterPage",
-                TextColor = Color.Black,
-                BackgroundColor = Color.White
+                TextColor = Color.White
             };
-             
+
             Content = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);

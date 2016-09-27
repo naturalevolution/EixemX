@@ -43,14 +43,22 @@ namespace EixemX.ViewModels.Authentication
         {
             await App.ExecuteIfConnectedToInternet(async () =>
             {
-                DisplayMessage = TextResources.Alert_Authentication_PasswordEmailInProgress;
-
-                if (await authenticationService.PasswordForgetAsync(Username))
+                if (!string.IsNullOrWhiteSpace(Username))
                 {
-                    await App.Current.MainPage.DisplayAlert(TextResources.Alert_Authentication_PasswordEmailSendTitle,
-                            TextResources.Alert_Authentication_PasswordEmailSendMessage, TextResources.Button_OK);
-                     
-                    DisplayMessage = TextResources.Alert_Authentication_PasswordEmailDone; 
+                    DisplayMessage = TextResources.Alert_Authentication_PasswordEmailInProgress;
+
+                    if (await authenticationService.PasswordForgetAsync(Username))
+                    {
+                        await
+                            App.Current.MainPage.DisplayAlert(TextResources.Alert_Authentication_PasswordEmailSendTitle,
+                                TextResources.Alert_Authentication_PasswordEmailSendMessage, TextResources.Button_OK);
+
+                        DisplayMessage = TextResources.Alert_Authentication_PasswordEmailDone;
+                    }
+                    else
+                    {
+                        DisplayMessage = TextResources.Alert_Authentication_PasswordForgetEmailNotExist;
+                    }
                 }
                 else
                 {

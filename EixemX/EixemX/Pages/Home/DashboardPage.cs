@@ -26,7 +26,8 @@ namespace EixemX.Pages.Home
         {
             var label = new Label
             {
-                Text = "Dashborad page "
+                Text = "Dashborad page ",
+                TextColor = Color.White
             };
 
             var result = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,

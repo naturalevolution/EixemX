@@ -188,6 +188,15 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le mail doit être celui associé à votre compte.
+        /// </summary>
+        internal static string Alert_Authentication_PasswordForgetEmailNotExist {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordForgetEmailNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This action requires access to remote data, but you don&apos;t seem to currently have a network connnection. Check your connection and try again..
         /// </summary>
         internal static string Alert_NetworkConnection_Message {

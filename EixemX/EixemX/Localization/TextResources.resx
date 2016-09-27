@@ -261,4 +261,9 @@
   <data name="Alert_Authentication_PasswordEmailDone" xml:space="preserve">
     <value>Connectez-vous avec le mot de passe reçu par mail</value>
   </data>
+  <data name="Alert_Authentication_PasswordForgetEmailNotExist" xml:space="preserve">
+    <value>Le mail doit être celui associé à votre compte</value>
+  </data>
+
+  
 </root>

@@ -15,8 +15,7 @@ namespace EixemX.Pages.Home
             var label = new Label
             {
                 Text = "EmprunterPage",
-                TextColor = Color.Black,
-                BackgroundColor = Color.White
+                TextColor = Color.White
             };
 
             Content = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,

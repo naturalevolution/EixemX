@@ -14,8 +14,7 @@ namespace EixemX.Pages.Home
             var label = new Label
             {
                 Text = "PayerPage",
-                TextColor = Color.Black,
-                BackgroundColor = Color.White
+                TextColor = Color.White
             };
 
 

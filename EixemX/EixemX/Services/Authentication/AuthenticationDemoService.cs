@@ -87,7 +87,7 @@ namespace EixemX.Services.Authentication
             //Server call simulation
             await Task.Delay(2000);
              
-            if (!string.IsNullOrWhiteSpace(email))
+            if (!string.IsNullOrWhiteSpace(email) && email.Equals(EmailDemo, StringComparison.CurrentCultureIgnoreCase))
             {
                 return true;
             }
