@@ -14,13 +14,13 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace EixemX.Droid
 {
-    [Activity(Label = "Eixem", Icon = "@drawable/icon", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "EIXEM", Icon = "@drawable/icon" ,  MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            global::Xamarin.Forms.Forms.SetTitleBarVisibility(Xamarin.Forms.AndroidTitleBarVisibility.Never); 
 
             /*var container = new SimpleContainer();
             container.Register<IDevice>(t => AndroidDevice.CurrentDevice);

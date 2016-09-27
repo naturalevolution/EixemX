@@ -52,10 +52,10 @@ namespace EixemX.Pages.Base
                 base.OnPropertyChanged("BindingContext");
             }
         }
-
-        protected void LogDegug(string message)
+         
+        protected void LogDebug(string message)
         {
-            System.Diagnostics.Debug.WriteLine(message);
+            System.Diagnostics.Debug.WriteLine(string.Format(">>>>>> DEBUG : {0} : {1}", message, GetType().FullName));
         }
 
         protected Label GetMessageLabel()
@@ -63,6 +63,13 @@ namespace EixemX.Pages.Base
             var result = labelFactory.LabelMessage();
             result.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
             return result;
+        }
+
+        protected override void OnAppearing()
+        {
+            LogDebug("OnAppearing");
+            base.OnAppearing();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

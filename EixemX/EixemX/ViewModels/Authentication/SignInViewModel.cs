@@ -35,9 +35,28 @@ namespace EixemX.ViewModels.Authentication
             set
             {
                 _password = value;
-                 SetProperty(ref _username, value, "Password"); 
-                //OnPropertyChanged("Password");
+                 SetProperty(ref _username, value, "Password");  
             }
+        }
+
+        public async void PasswordForgetClicked(object sender, EventArgs e)
+        {
+            await App.ExecuteIfConnectedToInternet(async () =>
+            {
+                DisplayMessage = TextResources.Alert_Authentication_PasswordEmailInProgress;
+
+                if (await authenticationService.PasswordForgetAsync(Username))
+                {
+                    await App.Current.MainPage.DisplayAlert(TextResources.Alert_Authentication_PasswordEmailSendTitle,
+                            TextResources.Alert_Authentication_PasswordEmailSendMessage, TextResources.Button_OK);
+                     
+                    DisplayMessage = TextResources.Alert_Authentication_PasswordEmailDone; 
+                }
+                else
+                {
+                    DisplayMessage = TextResources.Alert_Authentication_PasswordForgetEmail;
+                }
+            });
         }
          
         public async void SignInClicked(object sender, EventArgs e)

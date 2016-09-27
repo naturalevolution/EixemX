@@ -47,11 +47,6 @@ namespace EixemX.Pages.Authentication
                 }
             };
             return layoutFactory.LayoutWithBackground(content);
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            NavigationPage.SetHasNavigationBar(this, false);
-        }
+        } 
     }
 }

@@ -1,28 +1,39 @@
 ﻿using EixemX.Helpers.Constants;
 using EixemX.Pages.Authentication;
+using EixemX.Pages.Base;
+using EixemX.ViewModels.Authentication;
+using EixemX.ViewModels.Home;
 using Xamarin.Forms;
 
 namespace EixemX.Pages.Home
 {
-    public class DashboardPage : ContentPage
+    public class DashboardPage : ModelBoundContentPage<DashboardViewModel>
     {
         public DashboardPage()
         {
-            SetBinding(TitleProperty, new Binding {Source = "Dashboard Root"});
-
-            Content = new Label {Text = "Welcome !!!"};
+            BindingContext = new DashboardViewModel(Navigation);
 
             // Catch the login success message from the MessagingCenter.
             // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
-            //Device.OnPlatform(Android: () => MessagingCenter.Subscribe<SignInPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
-            //Device.OnPlatform(Android: () => MessagingCenter.Subscribe<RegistrationPasswordConfirmPage>(this, MessagingServiceConstants.REGISTERED, sender => OnAppearing()));
-             
-        }
+ 
+            /*Device.OnPlatform(Android:() =>
+                    MessagingCenter.Subscribe<SignInViewModel>(this, MessagingServiceConstants.AUTHENTICATED, sender => Auth2())); 
+*/
+            Content = CreatePage(); 
+        } 
 
-        protected override void OnAppearing()
+        private Layout CreatePage()
         {
-            base.OnAppearing();
-             
+            var label = new Label
+            {
+                Text = "Dashborad page "
+            };
+
+            var result = layoutFactory.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+                ViewModel.NavigationLogoClicked,
+                ViewModel.NavigationAccountClicked, label);
+
+            return result;
         }
     }
 }

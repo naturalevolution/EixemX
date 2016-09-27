@@ -34,8 +34,8 @@ namespace EixemX.Pages.Authentication
             var messageLabel = labelFactory.LabelMessage();
             messageLabel.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
 
-            var linkToPasswordForget = labelFactory.HyperLinkLabel();
-
+            var linkToPasswordForget = buttonFactory.Link(TextResources.Account_Link_PasswordForget, ViewModel.PasswordForgetClicked);
+                
             var backArrowButton = buttonFactory.ArrowLeft(ViewModel.BackButtonClicked);
 
             var titleLayout = layoutFactory.TitleLayout(imageFactory.WhiteLogoSmall(), backArrowButton);
@@ -62,8 +62,7 @@ namespace EixemX.Pages.Authentication
 
         protected override async void OnAppearing()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
-            base.OnAppearing();
+            base.OnAppearing(); 
 
             // fetch the demo credentials
             await ViewModel.LoadDemoCredentials();

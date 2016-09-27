@@ -11,6 +11,7 @@ namespace EixemX.Droid.Activities.Splash
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            global::Xamarin.Forms.Forms.SetTitleBarVisibility(Xamarin.Forms.AndroidTitleBarVisibility.Never);
             StartActivity(typeof(MainActivity));
         }
     }

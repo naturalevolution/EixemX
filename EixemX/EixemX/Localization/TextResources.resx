@@ -219,4 +219,46 @@
   <data name="Alert_Registration_LastnameInvalid" xml:space="preserve">
     <value>Vérifier votre nom</value>
   </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>A propos</value>
+  </data>
+  <data name="Menu_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Menu_Emprunter" xml:space="preserve">
+    <value>Emprunter</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Historiques</value>
+  </data>
+  <data name="Menu_Payer" xml:space="preserve">
+    <value>Payer</value>
+  </data>
+  <data name="Menu_Preter" xml:space="preserve">
+    <value>Prêter</value>
+  </data>
+  <data name="Menu_Professional" xml:space="preserve">
+    <value>Professionnels</value>
+  </data>
+  <data name="Menu_Retirer" xml:space="preserve">
+    <value>Retirer</value>
+  </data>
+  <data name="Menu_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Alert_Authentication_PasswordForgetEmail" xml:space="preserve">
+    <value>Vous devez renseigner votre mail</value>
+  </data>
+  <data name="Alert_Authentication_PasswordEmailSendMessage" xml:space="preserve">
+    <value>Vous avez reçu un mail vous permettant de modifier votre mot de passe</value>
+  </data>
+  <data name="Alert_Authentication_PasswordEmailSendTitle" xml:space="preserve">
+    <value>Mot de passe oublié</value>
+  </data>
+  <data name="Alert_Authentication_PasswordEmailInProgress" xml:space="preserve">
+    <value>Un mail va vous être envoyé ...</value>
+  </data>
+  <data name="Alert_Authentication_PasswordEmailDone" xml:space="preserve">
+    <value>Connectez-vous avec le mot de passe reçu par mail</value>
+  </data>
 </root>

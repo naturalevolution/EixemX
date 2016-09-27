@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="EixemX.Pages.Menus.MenuPage"  
+    Title="{Binding Title}"
+    Icon="{Binding Icon}"
+    BackgroundColor="Black">
+     <ContentPage.Content>
+            <ListView 
+                SeparatorColor="Transparent"
+                Grid.ColumnSpan="3"
+                Grid.Row="4"
+                HasUnevenRows="true"
+                BackgroundColor="White"
+                x:Name="ListViewMenu">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions> 
+                            <ColumnDefinition Width="*"/> 
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/> 
+                            <RowDefinition Height="Auto"/> 
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="30, 15 , 0, 10" Spacing="20" Orientation="Horizontal">
+                                <Image Source="{Binding Icon}"  HeightRequest="50" WidthRequest="50" VerticalOptions="Center"/>
+                                <Label Text="{Binding Title}" TextColor="#888888" FontSize="23" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </ContentPage.Content>
+</ContentPage>

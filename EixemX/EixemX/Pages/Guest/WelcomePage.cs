@@ -15,10 +15,7 @@ namespace EixemX.Pages.Guest
     {
         public WelcomePage()
         {
-            BindingContext = new WelcomeViewModel
-            {
-                Navigation = this.Navigation
-            };
+            BindingContext = new WelcomeViewModel(this.Navigation);
             Content = CreateLayout();
         } 
 
@@ -54,11 +51,6 @@ namespace EixemX.Pages.Guest
             };
             return layoutFactory.LayoutWithBackground(contentLayout);
         }
-
-        protected override void OnAppearing()
-        { 
-            base.OnAppearing();
-            NavigationPage.SetHasNavigationBar(this, false);
-        }
+         
     }
 }

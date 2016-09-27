@@ -16,14 +16,16 @@ namespace EixemX.ViewModels.Guest
         public async void SignInPageClicked(object sender, EventArgs eventArgs)
         {
             LogDebug("SignInPageClicked");
-            await Navigation.PushAsync(new SignInPage());
+           // await Navigation.PushAsync(new SignInPage());
+            await PushAsync(new SignInPage());
             buttonFactory.SetToDefault(sender as Button, ButtonStyle.Transparent);
         }
 
         public async void RegistrationPageClicked(object sender, EventArgs eventArgs)
         {
-            LogDebug("RegistrationPageClicked");  
-            await Navigation.PushAsync(new RegistrationPage());
+            LogDebug("RegistrationPageClicked");
+            // await Navigation.PushAsync(new RegistrationPage());
+            await PushAsync(new RegistrationPage());
             buttonFactory.SetToDefault(sender as Button, ButtonStyle.White);
         }
     }

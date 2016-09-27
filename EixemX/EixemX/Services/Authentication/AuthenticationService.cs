@@ -88,7 +88,12 @@ namespace EixemX.Services.Authentication
         public Task<bool> RegisterAsync(RegistrationModel model)
         {
             throw new NotImplementedException();
-        } 
+        }
+
+        public Task<bool> PasswordForgetAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
 
         bool _AuthenticationBypassed;
         /// <summary>

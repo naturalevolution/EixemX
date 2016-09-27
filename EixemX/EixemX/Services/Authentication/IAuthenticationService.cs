@@ -14,5 +14,7 @@ namespace EixemX.Services.Authentication
         bool IsAuthenticated { get; }
          
         Task<bool> RegisterAsync(RegistrationModel model);
+
+        Task<bool> PasswordForgetAsync(string email);
     }
 }

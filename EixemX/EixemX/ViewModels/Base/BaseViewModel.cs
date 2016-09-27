@@ -54,14 +54,17 @@ namespace EixemX.ViewModels.Base
 
         private string title = string.Empty;
         private string _displayMessage;
-         
 
-        public BaseViewModel(INavigation navigation = null)
+        public BaseViewModel(INavigation navigation)
         {
             Navigation = navigation;
             configFetcher = DependencyService.Get<IConfigFetcher>();
             authenticationService = DependencyService.Get<IAuthenticationService>();
             buttonFactory = DependencyService.Get<IButtonFactory>();
+        }
+
+        public BaseViewModel() : this(null)
+        { 
         }
 
         protected IButtonFactory buttonFactory;
@@ -184,5 +187,6 @@ namespace EixemX.ViewModels.Base
         {
             System.Diagnostics.Debug.WriteLine(string.Format(">>>>>> DEBUG : {0} : {1}",message,GetType().FullName));
         }
+
     }
 }

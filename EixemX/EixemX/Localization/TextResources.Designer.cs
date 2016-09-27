@@ -143,6 +143,51 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connectez-vous avec le mot de passe reçu par mail.
+        /// </summary>
+        internal static string Alert_Authentication_PasswordEmailDone {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordEmailDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Un mail va vous être envoyé ....
+        /// </summary>
+        internal static string Alert_Authentication_PasswordEmailInProgress {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordEmailInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous avez reçu un mail vous permettant de modifier votre mot de passe.
+        /// </summary>
+        internal static string Alert_Authentication_PasswordEmailSendMessage {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordEmailSendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mot de passe oublié.
+        /// </summary>
+        internal static string Alert_Authentication_PasswordEmailSendTitle {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordEmailSendTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez renseigner votre mail.
+        /// </summary>
+        internal static string Alert_Authentication_PasswordForgetEmail {
+            get {
+                return ResourceManager.GetString("Alert_Authentication_PasswordForgetEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This action requires access to remote data, but you don&apos;t seem to currently have a network connnection. Check your connection and try again..
         /// </summary>
         internal static string Alert_NetworkConnection_Message {
@@ -319,6 +364,87 @@ namespace EixemX.Localization {
         internal static string Button_SignIn {
             get {
                 return ResourceManager.GetString("Button_SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A propos.
+        /// </summary>
+        internal static string Menu_About {
+            get {
+                return ResourceManager.GetString("Menu_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string Menu_Contact {
+            get {
+                return ResourceManager.GetString("Menu_Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        internal static string Menu_Dashboard {
+            get {
+                return ResourceManager.GetString("Menu_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emprunter.
+        /// </summary>
+        internal static string Menu_Emprunter {
+            get {
+                return ResourceManager.GetString("Menu_Emprunter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historiques.
+        /// </summary>
+        internal static string Menu_History {
+            get {
+                return ResourceManager.GetString("Menu_History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payer.
+        /// </summary>
+        internal static string Menu_Payer {
+            get {
+                return ResourceManager.GetString("Menu_Payer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prêter.
+        /// </summary>
+        internal static string Menu_Preter {
+            get {
+                return ResourceManager.GetString("Menu_Preter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Professionnels.
+        /// </summary>
+        internal static string Menu_Professional {
+            get {
+                return ResourceManager.GetString("Menu_Professional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retirer.
+        /// </summary>
+        internal static string Menu_Retirer {
+            get {
+                return ResourceManager.GetString("Menu_Retirer", resourceCulture);
             }
         }
         

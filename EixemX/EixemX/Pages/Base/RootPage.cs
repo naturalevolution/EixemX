@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using EixemX.Constants;
 using EixemX.Controls.Menus;
 using EixemX.Controls.Navigations;
+using EixemX.Factories;
 using EixemX.Pages.Home;
+using EixemX.Pages.Menus;
 using EixemX.ViewModels.Base;
 using Xamarin.Forms;
 
@@ -10,20 +14,20 @@ namespace EixemX.Pages.Base
 {
     public class RootPage : MasterDetailPage
     {
+        ILabelFactory LabelFactory;
+        IButtonFactory ButtonFactory;
+        IImageFactory ImageFactory;
         public RootPage()
         {
-            Pages = new Dictionary<MenuType, NavigationPage>();
-            Master = new DashboardPage();
-            BindingContext = new BaseViewModel(Navigation)
-            {
-                Title = "Xamarin CRM",
-                Icon = "slideout.png"
-            };
+            Pages = new Dictionary<MenuType, DefaultNavigationPage>();
+            Master = new MenuPage(this);
+
             //setup home page
             NavigateAsync(MenuType.Dashboard);
-        }
+        } 
 
-        private Dictionary<MenuType, NavigationPage> Pages { get; }
+
+        private Dictionary<MenuType, DefaultNavigationPage> Pages { get; }
 
         private void SetDetailIfNull(Page page)
         {
@@ -31,70 +35,101 @@ namespace EixemX.Pages.Base
                 Detail = page;
         }
 
+        private void AddPageToDictionnary(MenuType id, DefaultNavigationPage page)
+        {
+            SetDetailIfNull(page);
+            Pages.Add(id, page);
+        }
+
         public async Task NavigateAsync(MenuType id)
         {
-            Page newPage;
-            if (!Pages.ContainsKey(id))
-            {
+            var imageFactory = DependencyService.Get<IImageFactory>();
+            DefaultNavigationPage newPage = null;
+            if (!Pages.TryGetValue(id, out newPage)) {
+                DefaultNavigationPage page = null;
                 switch (id)
                 {
-                    default:
-                        var page = new DefaultNavigationPage(new DashboardPage
+                    case MenuType.Dashboard:
+                        page = new DefaultNavigationPage(new DashboardPage
                         {
-                            Title = "Main page From root",
-                            Icon = new FileImageSource {File = "sales.png"}
+                            Icon = imageFactory.GreenLogoFileImage()
                         });
-                        SetDetailIfNull(page);
-                        Pages.Add(id, page);
+                        AddPageToDictionnary(id, page);
                         break;
-                    /* case MenuType.Customers:
-                         page = new DefaultNavigationPage(new CustomersPage
-                         {
-                             BindingContext = new CustomersViewModel() { Navigation = this.Navigation },
-                             Title = TextResources.MainTabs_Customers,
-                             Icon = new FileImageSource { File = "customers.png" }
-                         });
-                         SetDetailIfNull(page);
-                         Pages.Add(id, page);
-                         break;
-                     case MenuType.Products:
-                         page = new DefaultNavigationPage(new CategoryListPage
-                         {
-                             BindingContext = new CategoriesViewModel() { Navigation = this.Navigation },
-                             Title = TextResources.MainTabs_Products,
-                             Icon = new FileImageSource { File = "products.png" }
-                         });
-                         SetDetailIfNull(page);
-                         Pages.Add(id, page);
-                         break;
-                     case MenuType.About:
-                         page = new DefaultNavigationPage(new AboutItemListPage
-                         {
-                             Title = TextResources.MainTabs_Products,
-                             Icon = new FileImageSource { File = "about.png" },
-                             BindingContext = new AboutItemListViewModel() { Navigation = this.Navigation }
-                         });
-                         SetDetailIfNull(page);
-                         Pages.Add(id, page);
-                         break;
-                */
-
-                    //  }
-                }
-
-                newPage = Pages[id];
-                if (newPage == null)
-                    return;
-
-                //pop to root for Windows Phone
-                if ((Detail != null) && (Device.OS == TargetPlatform.WinPhone))
-                    await Detail.Navigation.PopToRootAsync();
-
-                Detail = newPage;
-
-                if (Device.Idiom != TargetIdiom.Tablet)
-                    IsPresented = false;
+                    case MenuType.History:
+                        page = new DefaultNavigationPage(new HistoryPage
+                        {
+                            Icon = imageFactory.HistoryPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Emprunter:
+                        page = new DefaultNavigationPage(new EmprunterPage
+                        {
+                            Icon = imageFactory.EmprunterPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Preter:
+                        page = new DefaultNavigationPage(new PreterPage
+                        {
+                            Icon = imageFactory.PreterPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Payer:
+                        page = new DefaultNavigationPage(new PayerPage
+                        {
+                            Icon = imageFactory.PayerPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Retirer:
+                        page = new DefaultNavigationPage(new RetirerPage
+                        {
+                            Icon = imageFactory.RetirerPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.About:
+                        page = new DefaultNavigationPage(new AboutPage
+                        {
+                            Icon = imageFactory.AboutPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Contact:
+                        page = new DefaultNavigationPage(new ContactPage
+                        {
+                            Icon = imageFactory.ContactPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break;
+                    case MenuType.Professional:
+                        page = new DefaultNavigationPage(new ProfessionalPage
+                        {
+                            Icon = imageFactory.ProfessionalPageIcon()
+                        });
+                        AddPageToDictionnary(id, page);
+                        break; 
+                } 
             }
+
+
+            newPage = Pages[id];
+            if (newPage == null)
+                return;
+
+            //pop to root for Windows Phone
+            if ((Detail != null) && (Device.OS == TargetPlatform.WinPhone))
+                await Detail.Navigation.PopToRootAsync();
+
+            Detail = newPage;
+
+            if (Device.Idiom != TargetIdiom.Tablet)
+                IsPresented = false;
+
         }
+
     }
 }

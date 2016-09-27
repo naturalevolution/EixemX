@@ -12,15 +12,15 @@ namespace EixemX.Factories
     {
         private const string ScreenBackgroud = "screen_bg.png";
         private const string BackgroundBarTitle = "bar_title.png";
-        ILabelFactory LabelFactory;
-        IButtonFactory ButtonFactory;
-        IImageFactory ImageFactory;
+        ILabelFactory labelFactory;
+        IButtonFactory buttonFactory;
+        IImageFactory imageFactory;
 
         public LayoutFactory()
         {
-            LabelFactory = DependencyService.Get<ILabelFactory>();
-            ButtonFactory = DependencyService.Get<IButtonFactory>();
-            ImageFactory = DependencyService.Get<IImageFactory>(); 
+            labelFactory = DependencyService.Get<ILabelFactory>();
+            buttonFactory = DependencyService.Get<IButtonFactory>();
+            imageFactory = DependencyService.Get<IImageFactory>(); 
         }
 
         public Layout LayoutWithBackground(View view)
@@ -44,7 +44,7 @@ namespace EixemX.Factories
                 Constraint.Constant(0),
                 Constraint.RelativeToParent(parent => { return parent.Width; }),
                 Constraint.RelativeToParent(parent => { return parent.Height; }));
-
+                
             layout.Children.Add(view,
                 Constraint.Constant(0),
                 Constraint.Constant(0),
@@ -116,6 +116,47 @@ namespace EixemX.Factories
             return result;
         }
 
+        public Layout ContentWithNavigation(EventHandler menuClicked, EventHandler logoClicked, EventHandler accountClicked, params View[] views)
+        {
+            var result = new StackLayout
+            {
+                Children =
+                {
+                    NavigationBarButtons(menuClicked, logoClicked, accountClicked)
+                }
+            };
+            foreach (var view in views)
+            {
+                result.Children.Add(view);
+            }
+
+            return LayoutWithBackground(result);
+        }
+
+        private Layout NavigationBarButtons(EventHandler menuClicked, EventHandler logoClicked, EventHandler accountClicked)
+        { 
+            var grid = new Grid
+            {
+                BackgroundColor = Palette.White,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Start
+            };
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Absolute) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Absolute) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Absolute) });
+
+            var menuButton = buttonFactory.NavigationMenu(menuClicked);
+            var logoButton = buttonFactory.NavigationLogo(logoClicked);
+            var accountButton = buttonFactory.NavigationAccount(accountClicked);
+
+            grid.Children.Add(menuButton, 0, 0);
+            grid.Children.Add(logoButton, 1, 0);
+            grid.Children.Add(accountButton, 2, 0);
+             
+            return grid;
+        }
+
         public Layout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null)
         {
             var result = GenerateTitleLayout(text, titleBar, eventBackButton, eventBarButton, true);
@@ -132,15 +173,15 @@ namespace EixemX.Factories
                 HorizontalOptions = LayoutOptions.FillAndExpand,
             };
 
-            Label labelTitle = LabelFactory.Title(text);
+            Label labelTitle = labelFactory.Title(text);
             AbsoluteLayout.SetLayoutBounds(labelTitle, new Rectangle(0.5, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(labelTitle, AbsoluteLayoutFlags.PositionProportional);
 
-            var buttonBackArrow = ButtonFactory.ArrowLeft(eventBackButton);
+            var buttonBackArrow = buttonFactory.ArrowLeft(eventBackButton);
             AbsoluteLayout.SetLayoutBounds(buttonBackArrow, new Rectangle(0.1, 0.8, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(buttonBackArrow, AbsoluteLayoutFlags.PositionProportional); 
 
-            var barTop = ButtonFactory.BarWithButtonTitle(titleBar, eventBarButton ?? eventBackButton);
+            var barTop = buttonFactory.BarWithButtonTitle(titleBar, eventBarButton ?? eventBackButton);
 
             result.Children.Add(buttonBackArrow);
             result.Children.Add(barTop);
@@ -167,6 +208,7 @@ namespace EixemX.Factories
         Layout LayoutFields(params View[] views);
         Layout LayoutButtons(params View[] views);
         Layout TitleLayoutLower(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
-        //, EventHandler<EventArgs> backButtonClicked);
+
+        Layout ContentWithNavigation(EventHandler menuClicked, EventHandler logoClicked, EventHandler accountClicked,params View[] views);
     }
 }

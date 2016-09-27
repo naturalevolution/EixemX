@@ -81,5 +81,17 @@ namespace EixemX.Services.Authentication
 
             return result;
         }
+
+        public async Task<bool> PasswordForgetAsync(string email)
+        { 
+            //Server call simulation
+            await Task.Delay(2000);
+             
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

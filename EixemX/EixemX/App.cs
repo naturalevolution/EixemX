@@ -41,12 +41,12 @@ namespace EixemX
             if (!_AuthenticationService.IsAuthenticated)
             {
                 MainPage = new DefaultNavigationPage(new WelcomePage());
-                NavigationPage.SetHasNavigationBar(this, false); 
             }
             else
             {
-                GoToRoot();
-            } 
+                GoToRoot(); 
+            }
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void RegisterDependencies()
@@ -56,8 +56,9 @@ namespace EixemX
 
         public static void GoToRoot()
         {
-                CurrentApp.MainPage = new RootPage(); 
-        }
+                CurrentApp.MainPage = new RootPage();
+        } 
+
         public static async Task ExecuteIfConnectedToInternet(Func<Task> actionToExecuteIfConnected)
         {
             if (IsConnected)

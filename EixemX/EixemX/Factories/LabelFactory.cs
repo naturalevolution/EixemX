@@ -32,23 +32,11 @@ namespace EixemX.Factories
             return result;
         }
 
-        public HyperLinkLabel HyperLinkLabel()
-        {
-            return new HyperLinkLabel
-            {
-                Text = TextResources.Account_Link_PasswordForget,
-                FontSize = PaletteText.FontSizeSmall,
-                TextColor = Palette.White,
-                HorizontalTextAlignment = TextAlignment.Center,
-                FontAttributes = FontAttributes.None
-            };
-        }
     }
 
     public interface ILabelFactory
     {
         Label LabelMessage(); 
-        Label Title(string text);
-        HyperLinkLabel HyperLinkLabel();
+        Label Title(string text);  
     }
 }

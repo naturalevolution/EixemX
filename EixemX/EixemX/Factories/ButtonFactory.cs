@@ -1,25 +1,40 @@
 using System;
+using System.Diagnostics;
 using EixemX.Constants;
 using EixemX.Controls.Buttons;
 using EixemX.Factories;
+using EixemX.Localization;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
-[assembly: Xamarin.Forms.Dependency(typeof(ButtonFactory))]
+[assembly: Dependency(typeof(ButtonFactory))]
+
 namespace EixemX.Factories
 {
     public interface IButtonFactory
-    { 
-        CustomButton WhiteDefault(string text, EventHandler eventClicked); 
+    {
+        CustomButton WhiteDefault(string text, EventHandler eventClicked);
         void SetToDefault(Button element, ButtonStyle buttonStyle);
-        CustomButton WhiteDefaultBar(string text, EventHandler eventClicked); 
+        CustomButton WhiteDefaultBar(string text, EventHandler eventClicked);
         ImageButton ArrowLeft(EventHandler eventClicked);
         AbsoluteLayout BarWithButtonTitle(string titleBar, EventHandler eventBarBarButton);
         CustomButton TransparentDefault(string text, EventHandler eventClicked);
+        Image NavigationMenu(EventHandler eventClicked);
+        Image NavigationAccount(EventHandler eventClicked);
+        Image NavigationLogo(EventHandler eventClicked);
+        CustomButton Link(string text, EventHandler eventClicked);
     }
 
     public class ButtonFactory : IButtonFactory
     {
+        private const string ArrowLeftPicture = "left_arrow.png"; 
+        IImageFactory imageFactory; 
+
+        public ButtonFactory()
+        {
+            imageFactory = DependencyService.Get<IImageFactory>();
+        }
+
         public CustomButton TransparentDefault(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
@@ -34,21 +49,21 @@ namespace EixemX.Factories
                 FontSize = PaletteText.FontSizeEntry,
                 TextColor = Palette.White
             };
-             
-            result.Pressed += (sender, args) => {
-                System.Diagnostics.Debug.WriteLine("TransparentDefault OnPressed");
-                var element = sender as Button; 
+
+            result.Pressed += (sender, args) =>
+            {
+                Debug.WriteLine("TransparentDefault OnPressed");
+                var element = sender as Button;
 
                 element.BackgroundColor = Palette.White;
-                element.TextColor = Palette.Green;  
+                element.TextColor = Palette.Green;
             };
             result.Released += eventClicked;
             return result;
         }
-
         public void SetToDefault(Button element, ButtonStyle buttonStyle)
         {
-            System.Diagnostics.Debug.WriteLine("SetToDefault"); 
+            Debug.WriteLine("SetToDefault");
             switch (buttonStyle)
             {
                 case ButtonStyle.Transparent:
@@ -78,8 +93,9 @@ namespace EixemX.Factories
                 TextColor = Palette.Green
             };
 
-            result.Pressed += (sender, args) => {
-                System.Diagnostics.Debug.WriteLine("WhiteDefault OnPressed");
+            result.Pressed += (sender, args) =>
+            {
+                Debug.WriteLine("WhiteDefault OnPressed");
                 var element = sender as Button;
 
                 element.BackgroundColor = Palette.Transparent;
@@ -88,6 +104,7 @@ namespace EixemX.Factories
             result.Released += eventClicked;
             return result;
         }
+
         public CustomButton WhiteDefaultBar(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
@@ -105,10 +122,10 @@ namespace EixemX.Factories
             result.Released += eventClicked;
             return result;
         }
-         
+
 
         public AbsoluteLayout BarWithButtonTitle(string text, EventHandler eventBarButton)
-        { 
+        {
             var result = new AbsoluteLayout
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
@@ -128,7 +145,8 @@ namespace EixemX.Factories
                 Opacity = 1
             };
             AbsoluteLayout.SetLayoutBounds(backgroundBtnOverlay, new Rectangle(0, 0, AbsoluteLayout.AutoSize, 1));
-            AbsoluteLayout.SetLayoutFlags(backgroundBtnOverlay, AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.HeightProportional);
+            AbsoluteLayout.SetLayoutFlags(backgroundBtnOverlay,
+                AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.HeightProportional);
 
             var buttonBack = new ImageButton
             {
@@ -137,24 +155,25 @@ namespace EixemX.Factories
                 TextColor = Palette.Green,
                 BackgroundColor = Palette.White,
                 BorderRadius = 20,
-                HeightRequest = 40 ,
+                HeightRequest = 40,
                 ImageTintColor = Palette.White
-            }; 
+            };
             buttonBack.Clicked += eventBarButton;
-            AbsoluteLayout.SetLayoutBounds(buttonBack, new Rectangle(0, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutBounds(buttonBack,
+                new Rectangle(0, 0, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(buttonBack, AbsoluteLayoutFlags.PositionProportional);
 
             result.Children.Add(backgroundBtnOverlay);
             result.Children.Add(backgroundLine);
             result.Children.Add(buttonBack);
-            
+
             AbsoluteLayout.SetLayoutBounds(result, new Rectangle(0, 0, 1, 40));
-            AbsoluteLayout.SetLayoutFlags(result, AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
+            AbsoluteLayout.SetLayoutFlags(result,
+                AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
 
             return result;
         }
 
-        private const string ArrowLeftPicture = "left_arrow.png";
         public ImageButton ArrowLeft(EventHandler eventClicked)
         {
             var result = new ImageButton
@@ -169,6 +188,53 @@ namespace EixemX.Factories
             result.Clicked += eventClicked;
             return result;
         }
+
+        public Image NavigationMenu(EventHandler eventClicked)
+        {
+            Image image = imageFactory.NavigationMenu(); 
+            image.Aspect = Aspect.AspectFit;
+            image.HeightRequest = 30;
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += eventClicked;
+            image.GestureRecognizers.Add(tapGestureRecognizer); 
+            return image;
+        }
+
+        public Image NavigationAccount(EventHandler eventClicked)
+        {
+            Image image = imageFactory.NavigationAccount();
+            image.Aspect = Aspect.AspectFit;
+            image.HeightRequest = 40;
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += eventClicked;
+            image.GestureRecognizers.Add(tapGestureRecognizer);
+            return image;
+        }
+
+        public Image NavigationLogo(EventHandler eventClicked)
+        {
+            Image image = imageFactory.NavigationLogo();
+            image.Aspect = Aspect.AspectFit;
+            image.HeightRequest = 20;
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += eventClicked;
+            image.GestureRecognizers.Add(tapGestureRecognizer);
+            return image;
+        }
+
+        public CustomButton Link(string text, EventHandler eventClicked)
+        {
+            var result = new CustomButton
+            {
+                Text = text,
+                FontSize = PaletteText.FontSizeSmall,
+                TextColor = Palette.White, 
+                FontAttributes = FontAttributes.None,
+                BackgroundColor = Palette.Transparent 
+            };
+            result.Released += eventClicked;
+            return result;
+        }
     }
 
     public enum ButtonStyle
@@ -176,5 +242,4 @@ namespace EixemX.Factories
         Transparent,
         White
     }
-
 }

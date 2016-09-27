@@ -2,6 +2,14 @@
 {
     public enum MenuType
     {
-        Dashboard = 0
+        Dashboard,
+        History,
+        Emprunter,
+        Preter,
+        Payer,
+        Retirer,
+        About,
+        Contact, 
+        Professional
     }
 }
