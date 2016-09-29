@@ -22,7 +22,8 @@ namespace EixemX.Droid.Renderers.Buttons
 
             var thisButton = Control;
 
-            thisButton.Typeface = Fonts.FontRegular;
+            thisButton.Typeface = customButton.FontAttributes == FontAttributes.Bold ? Fonts.FontRegular : Fonts.FontLight;
+
             /* if (customButton.BackgroundColor == Palette.White)
              {
                  thisButton.Typeface = Fonts.FontRegular;

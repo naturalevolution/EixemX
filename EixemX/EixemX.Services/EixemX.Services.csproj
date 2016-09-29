@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Account\UserAccountModel.cs" />
     <Compile Include="Base\BaseModel.cs" />
     <Compile Include="Account\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,15 +1,17 @@
 ﻿using System;
 using EixemX.Controls.Menus;
+using EixemX.Pages.Account;
 using EixemX.Pages.Base;
+using EixemX.ViewModels.Home;
 using Xamarin.Forms;
 
 namespace EixemX.ViewModels.Base
 {
     public abstract class BaseViewModelNavigation : BaseViewModel
     {
+
         protected BaseViewModelNavigation(INavigation navigation) : base(navigation)
         {
-
         }
         protected RootPage GetRootPage()
         {
@@ -32,18 +34,19 @@ namespace EixemX.ViewModels.Base
             var root = GetRootPage();
             if (root != null)
             {
-                await root.DisplayAlert("Alert", "Account", "OK");
+                await PushAsync(new AccountDetailPage());
             }
         }
 
         public virtual async void NavigationLogoClicked(object sender, EventArgs e)
         {
             LogDebug("NavigationLogoClicked");
+            App.GoToRoot();/*
             var root = GetRootPage();
             if (root != null)
             {
                 await root.NavigateAsync(MenuType.Dashboard);
-            }
+            }*/
         }
     }
 }

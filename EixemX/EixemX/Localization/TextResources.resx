@@ -220,7 +220,7 @@
     <value>Vérifier votre nom</value>
   </data>
   <data name="Menu_About" xml:space="preserve">
-    <value>A propos</value>
+    <value>À propos</value>
   </data>
   <data name="Menu_Contact" xml:space="preserve">
     <value>Contact</value>
@@ -250,7 +250,7 @@
     <value>Vous devez renseigner votre mail</value>
   </data>
   <data name="Alert_Authentication_PasswordEmailSendMessage" xml:space="preserve">
-    <value>Vous avez reçu un mail vous permettant de modifier votre mot de passe</value>
+    <value>Vous allez recevoir un mail vous permettant de réinitialiser votre mot de passe</value>
   </data>
   <data name="Alert_Authentication_PasswordEmailSendTitle" xml:space="preserve">
     <value>Mot de passe oublié</value>
@@ -264,6 +264,52 @@
   <data name="Alert_Authentication_PasswordForgetEmailNotExist" xml:space="preserve">
     <value>Le mail doit être celui associé à votre compte</value>
   </data>
-
-  
+  <data name="Application_Name" xml:space="preserve">
+    <value>EIXEM</value>
+  </data>
+  <data name="Dashboard_BorrowAvailable" xml:space="preserve">
+    <value>DISPONIBLE</value>
+  </data>
+  <data name="Dashboard_BorrowAvailableTo" xml:space="preserve">
+    <value>Jusqu'au {0}</value>
+  </data>
+  <data name="Dashboard_Details" xml:space="preserve">
+    <value>détails</value>
+  </data>
+  <data name="Field_PriceEuro" xml:space="preserve">
+    <value>{0} €</value>
+  </data>
+  <data name="Dashboard_Interest" xml:space="preserve">
+    <value>INTÉRÊTS</value>
+  </data>
+  <data name="Dashboard_Loan" xml:space="preserve">
+    <value>MIS À DISPOSITION</value>
+  </data>
+  <data name="Account_ProfileTitle" xml:space="preserve">
+    <value>MON PROFIL</value>
+  </data>
+  <data name="Account_Address_Title" xml:space="preserve">
+    <value>Adresse de facturation</value>
+  </data>
+  <data name="Account_BankCard_Title" xml:space="preserve">
+    <value>Carte bancaire</value>
+  </data>
+  <data name="Account_Finance_Title" xml:space="preserve">
+    <value>Revenu mensuel</value>
+  </data>
+  <data name="Account_BankCard_FieldBank" xml:space="preserve">
+    <value>Banque</value>
+  </data>
+  <data name="Account_BankCard_FieldCardNumber" xml:space="preserve">
+    <value>Numéro</value>
+  </data>
+  <data name="Account_BankCard_FieldDateExpire" xml:space="preserve">
+    <value>Expire le</value>
+  </data>
+  <data name="Account_BankCard_FieldIban" xml:space="preserve">
+    <value>RIB</value>
+  </data>
+  <data name="Account_BankCard_IbanTitle" xml:space="preserve">
+    <value>Carte personnelle</value>
+  </data>
 </root>

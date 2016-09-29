@@ -32,11 +32,11 @@ namespace EixemX.Pages.Authentication
             var emailEntry = ComponentFactories.Entries.EntryDefaultEmail(TextResources.Account_Field_Email);
             emailEntry.SetBinding(Entry.TextProperty, "Model.Email", BindingMode.TwoWay);
 
-            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
+            var fieldsLayout = ComponentFactories.Layouts.FormFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
 
-            var linkToNext = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
+            var linkToNext = ComponentFactories.Buttons.TransparentRound(TextResources.Button_Next, ViewModel.NextClicked);
 
-            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToNext);
+            var buttonsLayout = ComponentFactories.Layouts.FormButtons(linkToNext);
              
             var content = new StackLayout
             {

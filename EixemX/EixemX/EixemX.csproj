@@ -38,6 +38,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Constants\Palette.cs" />
     <Compile Include="Controls\Entries\CustomEntry.cs" />
+    <Compile Include="Controls\Labels\CustomLabel.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Factories\EntryFactory.cs" />
     <Compile Include="Factories\ButtonFactory.cs" />
@@ -55,12 +56,17 @@
     </Compile>
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Pages\Authentication\RegistrationPage.cs" />
-    <Compile Include="Controls\Navigations\DefaultNavigationPage.cs" />
+    <Compile Include="Pages\Base\DefaultNavigationPage.cs" />
     <Compile Include="Controls\Menus\HomeMenuItem.cs" />
     <Compile Include="Controls\Menus\MenuType.cs" />
     <Compile Include="Pages\Authentication\RegistrationPasswordConfirmPage.cs" />
     <Compile Include="Pages\Authentication\RegistrationPasswordPage.cs" />
     <Compile Include="Pages\Home\AboutPage.cs" />
+    <Compile Include="Pages\Menus\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Account\AccountDetailPage.cs" />
+    <Compile Include="ViewModels\Account\AccountDetailViewModel.cs" />
     <Compile Include="ViewModels\Home\AboutViewModel.cs" />
     <Compile Include="Pages\Home\ContactPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModelNavigation.cs" />
@@ -78,9 +84,6 @@
     <Compile Include="Pages\Home\RetirerPage.cs" />
     <Compile Include="ViewModels\Home\RetirerViewModel.cs" />
     <Compile Include="ViewModels\Home\DashboardViewModel.cs" />
-    <Compile Include="Pages\Menus\MenuPage.xaml.cs">
-      <DependentUpon>MenuPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\Authentication\AuthenticationDemoService.cs" />
     <Compile Include="Services\Authentication\AuthenticationService.cs" />
     <Compile Include="Services\Authentication\IAuthenticationService.cs" />
@@ -196,7 +199,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\Navigations\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

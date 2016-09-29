@@ -7,22 +7,39 @@ namespace EixemX.Factories
 {
     public class ImageFactory : IImageFactory
     {
+        private const string ArrowLeftPicture = "arrow_left.png";
+        private const string ArrowRightPicture = "arrow_right.png";
+         
+        public const string SreenBackgroundGreen = "screen_bg.png";
         public const string LogoWhiteTransparent = "logo_white.png";
         public const string NavigationLogoIcon = "logo_green.png";
         public const string IconNavigation = "nav_icon.png";
         public const string IconAccount = "account_icon.png";
-        public const string IconHistory = "history_icon.png";
-        public const string IconEmprunter = "emprunter_icon.png";
-        public const string IconPreter = "preter_icon.png";
-        public const string IconPayer = "payer_icon.png";
-        public const string IconRetirer = "retirer_icon.png";
-        public const string IconAbout = "about_icon.png";
-        public const string IconContact = "contact_icon.png";
-        public const string IconProfessional = "professional_icon.png";
-        private const string NavigationMenuIcon = "nav_icon.png";
-        private const string NavigationAccountIcon = "account_icon.png";
 
-        public FileImageSource GreenLogoFileImage()
+        public const string NavigationMenuIcon = "nav_icon.png";
+        public const string NavigationAccountIcon = "account_icon.png";
+        public const string NavigationMenuBackgroundIcon = "nav_bg.jpg";
+
+        public const string MenuHistory = "history_icon.png";
+        public const string MenuEmprunter = "emprunter_icon.png";
+        public const string MenuPreter = "preter_icon.png";
+        public const string MenuPayer = "payer_icon.png";
+        public const string MenuRetirer = "retirer_icon.png";
+        public const string MenuAbout = "about_icon.png";
+        public const string MenuContact = "contact_icon.png";
+        public const string MenuProfessional = "professional_icon.png";
+
+        public const string MenuPreterSelected = "preter_icon_white.png";
+        public const string MenuRetirerSelected = "retirer_icon_white.png";
+        public const string MenuEmprunterSelected = "emprunter_icon_white.png";
+        public const string MenuHistorySelected = "history_icon_white.png";
+        public const string MenuAboutSelected = "about_icon_white.jpg";
+        public const string MenuContactSelected = "contact_icon_white.jpg";
+        public const string MenuProfessionalSelected = "professional_icon_white.png";
+        public const string MenuPayerSelected = "payer_icon_white.png";
+        
+
+public FileImageSource GreenLogoFileImage()
         {
             return new FileImageSource {File = NavigationLogoIcon};
         }
@@ -39,42 +56,42 @@ namespace EixemX.Factories
 
         public FileImageSource HistoryPageIcon()
         {
-            return new FileImageSource {File = IconHistory};
+            return new FileImageSource {File = MenuHistory};
         }
 
         public FileImageSource EmprunterPageIcon()
         {
-            return new FileImageSource {File = IconEmprunter};
+            return new FileImageSource {File = MenuEmprunter};
         }
 
         public FileImageSource PreterPageIcon()
         {
-            return new FileImageSource {File = IconPreter};
+            return new FileImageSource {File = MenuPreter};
         }
 
         public FileImageSource PayerPageIcon()
         {
-            return new FileImageSource {File = IconPayer};
+            return new FileImageSource {File = MenuPayer};
         }
 
         public FileImageSource RetirerPageIcon()
         {
-            return new FileImageSource {File = IconRetirer};
+            return new FileImageSource {File = MenuRetirer};
         }
 
         public FileImageSource AboutPageIcon()
         {
-            return new FileImageSource {File = IconAbout};
+            return new FileImageSource {File = MenuAbout};
         }
 
         public FileImageSource ProfessionalPageIcon()
         {
-            return new FileImageSource {File = IconProfessional};
+            return new FileImageSource {File = MenuProfessional};
         }
 
         public FileImageSource ContactPageIcon()
         {
-            return new FileImageSource {File = IconContact};
+            return new FileImageSource {File = MenuContact};
         }
 
         public Image NavigationLogo()
@@ -105,6 +122,21 @@ namespace EixemX.Factories
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Source = ImageSource.FromFile(NavigationAccountIcon)
             };
+        }
+
+        public FileImageSource NavigationMenuBackground()
+        { 
+            return new FileImageSource { File = NavigationMenuBackgroundIcon };
+        }
+
+        public ImageSource ArrowLeft()
+        {
+            return ImageSource.FromFile(ArrowLeftPicture);
+        }
+
+        public ImageSource ArrowRight()
+        {
+            return ImageSource.FromFile(ArrowRightPicture);
         }
 
         public Image WhiteLogo()
@@ -144,5 +176,8 @@ namespace EixemX.Factories
         Image NavigationLogo();
         Image NavigationMenu();
         Image NavigationAccount();
+        FileImageSource NavigationMenuBackground();
+        ImageSource ArrowLeft(); 
+        ImageSource ArrowRight();
     }
 }

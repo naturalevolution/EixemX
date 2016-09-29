@@ -20,17 +20,17 @@ namespace EixemX.Pages.Authentication
 
         public Layout CreatePage()
         {
-            var titleLayout = ComponentFactories.Layouts.TitleLayoutLower(TextResources.Registration_PasswordTitle,
+            var titleLayout = ComponentFactories.Layouts.TitleSubLayout(TextResources.Registration_PasswordTitle,
                 TextResources.Registration_Secret, ViewModel.BackButtonClicked);
 
             var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty);
             passwordEntry.SetBinding(Entry.TextProperty, "Model.Password", BindingMode.TwoWay);
 
-            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(GetMessageLabel(), passwordEntry);
+            var fieldsLayout = ComponentFactories.Layouts.FormFields(GetMessageLabel(), passwordEntry);
 
-            var linkToNext = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_Next, ViewModel.NextClicked);
+            var linkToNext = ComponentFactories.Buttons.TransparentRound(TextResources.Button_Next, ViewModel.NextClicked);
 
-            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToNext);
+            var buttonsLayout = ComponentFactories.Layouts.FormButtons(linkToNext);
 
             var content = new StackLayout
             {

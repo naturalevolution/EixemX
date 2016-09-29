@@ -1,9 +1,8 @@
 ﻿using EixemX.Constants;
 using EixemX.Factories;
-using Microsoft.Data.OData;
 using Xamarin.Forms;
 
-namespace EixemX.Controls.Navigations
+namespace EixemX.Pages.Base
 {
     public class DefaultNavigationPage : NavigationPage
     { 

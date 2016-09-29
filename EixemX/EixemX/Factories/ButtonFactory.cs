@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using EixemX.Constants;
 using EixemX.Controls.Buttons;
+using EixemX.Controls.Labels;
 using EixemX.Factories;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
@@ -12,23 +13,25 @@ namespace EixemX.Factories
 {
     public interface IButtonFactory
     {
-        CustomButton WhiteDefault(string text, EventHandler eventClicked);
+        CustomButton WhiteRound(string text, EventHandler eventClicked);
         void SetToDefault(Button element, ButtonStyle buttonStyle);
         CustomButton WhiteDefaultBar(string text, EventHandler eventClicked);
         ImageButton ArrowLeft(EventHandler eventClicked);
         AbsoluteLayout BarWithButtonTitle(string titleBar, EventHandler eventBarBarButton);
-        CustomButton TransparentDefault(string text, EventHandler eventClicked);
+        CustomButton TransparentRound(string text, EventHandler eventClicked);
         Image NavigationMenu(EventHandler eventClicked);
         Image NavigationAccount(EventHandler eventClicked);
         Image NavigationLogo(EventHandler eventClicked);
         CustomButton Link(string text, EventHandler eventClicked);
+        ImageButton ArrowRight(EventHandler eventClicked);
+        AbsoluteLayout TitleCirleButtons(string text, params CustomButton[] buttons);
+        CustomButton TextCircleButton(string text, EventHandler evenClicked);
+        AbsoluteLayout TitleLayout(string text, EventHandler backButton);
     }
 
     public class ButtonFactory : IButtonFactory
     {
-        private const string ArrowLeftPicture = "left_arrow.png"; 
-         
-        public CustomButton TransparentDefault(string text, EventHandler eventClicked)
+        public CustomButton TransparentRound(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
             {
@@ -39,13 +42,13 @@ namespace EixemX.Factories
                 BorderRadius = 25,
                 BorderWidth = 1,
                 Text = text,
-                FontSize = PaletteText.FontSizeEntry,
+                FontSize = PaletteText.FontSizeML,
                 TextColor = Palette.White
             };
 
             result.Pressed += (sender, args) =>
             {
-                Debug.WriteLine("TransparentDefault OnPressed");
+                Debug.WriteLine("TransparentRound OnPressed");
                 var element = sender as Button;
 
                 element.BackgroundColor = Palette.White;
@@ -72,7 +75,7 @@ namespace EixemX.Factories
         }
 
 
-        public CustomButton WhiteDefault(string text, EventHandler eventClicked)
+        public CustomButton WhiteRound(string text, EventHandler eventClicked)
         {
             var result = new CustomButton
             {
@@ -83,13 +86,14 @@ namespace EixemX.Factories
                 BorderRadius = 25,
                 BorderWidth = 1,
                 Text = text,
-                FontSize = PaletteText.FontSizeMediumButton,
-                TextColor = Palette.Green
+                FontSize = PaletteText.FontSizeML,
+                TextColor = Palette.Green,
+                FontAttributes = FontAttributes.Bold
             };
 
             result.Pressed += (sender, args) =>
             {
-                Debug.WriteLine("WhiteDefault OnPressed");
+                Debug.WriteLine("WhiteRound OnPressed");
                 var element = sender as Button;
 
                 element.BackgroundColor = Palette.Transparent;
@@ -110,7 +114,7 @@ namespace EixemX.Factories
                 BorderRadius = 25,
                 BorderWidth = 1,
                 Text = text,
-                FontSize = PaletteText.FontSizeMediumButton,
+                FontSize = PaletteText.FontSizeM,
                 TextColor = Palette.Green
             };
             result.Released += eventClicked;
@@ -173,13 +177,172 @@ namespace EixemX.Factories
             var result = new ImageButton
             {
                 BackgroundColor = Palette.Transparent,
-                Source = ImageSource.FromFile(ArrowLeftPicture),
+                Source = ComponentFactories.Images.ArrowLeft(),
                 VerticalOptions = LayoutOptions.EndAndExpand,
                 HorizontalOptions = LayoutOptions.Start,
                 HeightRequest = 50,
                 WidthRequest = 50
             };
             result.Clicked += eventClicked;
+            return result;
+        }
+
+        public ImageButton ArrowRight(EventHandler eventClicked)
+        {
+            var result = new ImageButton
+            {
+                BackgroundColor = Palette.Transparent,
+                Source = ComponentFactories.Images.ArrowRight(),
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.End
+            };
+            result.Clicked += eventClicked;
+            return result; 
+        }
+
+        public AbsoluteLayout TitleLayout(string text, EventHandler backButton)
+        {
+
+            var result = new AbsoluteLayout
+            {
+                BackgroundColor = Palette.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            var label = new CustomLabel
+            {
+                Text = text,
+                TextColor = Palette.White,
+                FontSize = PaletteText.FontSizeL,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            AbsoluteLayout.SetLayoutBounds(label, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
+            result.Children.Add(label);
+
+            var arrowLeft = ArrowLeft(backButton);
+            AbsoluteLayout.SetLayoutBounds(arrowLeft, new Rectangle(0, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(arrowLeft, AbsoluteLayoutFlags.PositionProportional);
+            result.Children.Add(label);
+            return result;
+            /*
+            return new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                Padding = 0,
+                Spacing = 0,
+                Children =
+                {
+                    ArrowLeft(backButton),
+                    new CustomLabel
+                    {
+                        Text = text,
+                        TextColor = Palette.White,
+                        FontSize = PaletteText.FontSizeL,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.Center
+                    }
+                }
+            };*/
+        }
+        public AbsoluteLayout TitleCirleButtons(string text, params CustomButton[] buttons)
+        {
+            var result = new AbsoluteLayout
+            {
+                BackgroundColor = Palette.Transparent,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            var label = new CustomLabel
+            {
+                Text = text,
+                TextColor = Palette.White,
+                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                FontAttributes = FontAttributes.Bold,
+                FontSize = PaletteText.FontSizeM
+            };
+
+            AbsoluteLayout.SetLayoutBounds(label, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
+            result.Children.Add(label);
+
+            var buttonStack = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand, 
+                Spacing = 10,
+                Padding = new Thickness(0, 0, 10,0)
+            };
+
+            foreach (var button in buttons)
+            {
+                var layoutButton = new AbsoluteLayout
+                { 
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+
+                var labelButton = new CustomLabel
+                {
+                    Text = button.Text,  
+                    TextColor = Color.White,
+                    FontSize = PaletteText.FontSizeL,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+
+                double xLabel = 0.5;
+                double yLabel = 0.4;
+
+                AbsoluteLayout.SetLayoutBounds(labelButton,
+                    new Rectangle(xLabel, yLabel, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                AbsoluteLayout.SetLayoutFlags(labelButton, AbsoluteLayoutFlags.PositionProportional);
+
+                AbsoluteLayout.SetLayoutBounds(button, new Rectangle(0, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                AbsoluteLayout.SetLayoutFlags(button, AbsoluteLayoutFlags.PositionProportional);
+
+                layoutButton.Children.Add(button);
+                layoutButton.Children.Add(labelButton);
+
+
+                buttonStack.Children.Add(layoutButton);
+            }
+            AbsoluteLayout.SetLayoutBounds(buttonStack, new Rectangle(1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(buttonStack, AbsoluteLayoutFlags.PositionProportional);
+            result.Children.Add(buttonStack);
+
+            return result;
+        }
+
+        public CustomButton TextCircleButton(string text, EventHandler evenClicked)
+        {
+            var result = new CustomButton
+            {
+                BorderRadius = 90,
+                BorderWidth = 1,
+                BorderColor = Color.White,
+                Text = text,
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent,
+                FontSize = PaletteText.FontSizeXL,
+                WidthRequest = 25,
+                HeightRequest = 25,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                
+            };
+            result.Released += evenClicked;
             return result;
         }
 
@@ -221,7 +384,7 @@ namespace EixemX.Factories
             var result = new CustomButton
             {
                 Text = text,
-                FontSize = PaletteText.FontSizeSmall,
+                FontSize = PaletteText.FontSizeS,
                 TextColor = Palette.White,
                 FontAttributes = FontAttributes.None,
                 BackgroundColor = Palette.Transparent

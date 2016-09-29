@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using EixemX.Factories;
+using EixemX.Services.Account;
 using EixemX.Services.Authentication;
 using EixemX.Services.Config;
+using EixemX.ViewModels.Home;
 using Xamarin.Forms;
 
 namespace EixemX.ViewModels.Base
@@ -55,11 +57,16 @@ namespace EixemX.ViewModels.Base
         private string title = string.Empty;
         private string _displayMessage;
 
+        public UserAccountModel UserAccountModel { get; set; }
+
         public BaseViewModel(INavigation navigation)
         {
             Navigation = navigation;
             configFetcher = DependencyService.Get<IConfigFetcher>();
-            authenticationService = DependencyService.Get<IAuthenticationService>(); 
+            authenticationService = DependencyService.Get<IAuthenticationService>();
+            //TODO A CHANGER
+            UserAccountModel = authenticationService.GetUserAccount().Result;
+
         }
 
         public BaseViewModel() : this(null)

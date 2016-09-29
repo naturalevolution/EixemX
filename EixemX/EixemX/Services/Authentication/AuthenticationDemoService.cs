@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EixemX.Services.Account;
 using EixemX.Services.Authentication;
- 
+using EixemX.ViewModels.Home;
+
 namespace EixemX.Services.Authentication
 {
     public class AuthenticationDemoService : IAuthenticationService
@@ -92,6 +93,42 @@ namespace EixemX.Services.Authentication
                 return true;
             }
             return false;
+        }
+
+        public async Task<UserAccountModel> GetUserAccount()
+        { 
+            var result = new UserAccountModel();
+
+            result.Borrow.AddBorrow(35.04, DateTime.Now.AddDays(20));
+            result.Interest.AddInterest(106.59);
+            result.Loan.AddLoan(15.67);
+            result.User.Update(new UserDetailModel
+            {
+                Address = new UserAddressModel
+                {
+                   Address = "177 boulevard du Président Wilson",
+                   City = "Bordeaux",
+                   Country = "France",
+                   PostalCode = "33300"
+                },
+                Bank = new UserBankModel
+                {
+                    BankCode = "ING",
+                    CardNumber = "XXXX XXXX XXXX X720",
+                    CardExpiredDate = DateTime.Now.AddDays(10).AddMonths(5),
+                    Iban = "INGGB76 XXX XXX XXX 5686",
+                    BankName = "LLOYDS BANK"
+                },
+                Finance = new UserFinanceModel
+                {
+                    Amount = 1500
+                },
+                Firstname = "Marc",
+                Lastname = "Durand",
+                DateInscription = DateTime.Now.AddDays(-10)
+            });
+
+            return result;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using EixemX.Controls.Buttons;
-using EixemX.Controls.Navigations;
 using EixemX.Factories;
 using EixemX.Localization;
 using EixemX.Pages.Authentication;
@@ -21,9 +20,9 @@ namespace EixemX.Pages.Guest
 
         private Layout CreateLayout()
         {
-            var linkToRegistration = ComponentFactories.Buttons.WhiteDefault(TextResources.Button_Registration, ViewModel.RegistrationPageClicked);
+            var linkToRegistration = ComponentFactories.Buttons.WhiteRound(TextResources.Button_Registration, ViewModel.RegistrationPageClicked);
 
-            var linkToSignIn = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInPageClicked);   
+            var linkToSignIn = ComponentFactories.Buttons.TransparentRound(TextResources.Button_SignIn, ViewModel.SignInPageClicked);   
 
             var contentLayout = new StackLayout
             {

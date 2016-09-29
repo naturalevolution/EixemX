@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EixemX.Services.Account;
 using EixemX.Services.Authentication;
 using EixemX.Services.Config;
+using EixemX.ViewModels.Home;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin.Forms;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
@@ -91,6 +92,11 @@ namespace EixemX.Services.Authentication
         }
 
         public Task<bool> PasswordForgetAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UserAccountModel> GetUserAccount()
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using EixemX.Constants;
+using EixemX.Controls.Labels;
 using EixemX.Factories;
 using Xamarin.Forms;
 
@@ -8,32 +9,41 @@ namespace EixemX.Factories
 {
     public class LabelFactory : ILabelFactory
     {
-        public Label LabelMessage()
+        public CustomLabel LabelMessage()
         {
-            return new Label
+            return new CustomLabel
             {
                 TextColor = Color.White,
-                FontSize = PaletteText.FontSizeXS,
+                FontSize = PaletteText.FontSizeS,
                 HorizontalTextAlignment = TextAlignment.Center
             };
         }
 
-        public Label Title(string text)
+        public CustomLabel Title(string text)
         {
-            var result = new Label
+            var result = new CustomLabel
             {
-                TextColor = Color.White,
+                TextColor = Color.White, 
                 FontSize = PaletteText.FontSizeM,
                 HorizontalTextAlignment = TextAlignment.Center,
                 Text = text
             };
             return result;
         }
+
+        public CustomLabel TitleSub(string text)
+        {
+            var result = Title(text);
+            result.FontSize = PaletteText.FontSizeM;
+            result.FontAttributes = FontAttributes.None;
+            return result;
+        }
     }
 
     public interface ILabelFactory
     {
-        Label LabelMessage();
-        Label Title(string text);
+        CustomLabel LabelMessage();
+        CustomLabel Title(string text);
+        CustomLabel TitleSub(string text);
     }
 }

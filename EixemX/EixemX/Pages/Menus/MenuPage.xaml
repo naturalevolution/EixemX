@@ -1,40 +1,55 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
 xmlns="http://xamarin.com/schemas/2014/forms" 
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-x:Class="EixemX.Pages.Menus.MenuPage"  
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:labels="clr-namespace:EixemX.Controls.Labels;assembly=EixemX"
+    x:Class="EixemX.Pages.Menus.MenuPage"  
     Title="{Binding Title}"
     Icon="{Binding Icon}"
-    BackgroundColor="Black">
-     <ContentPage.Content>
-            <ListView 
-                SeparatorColor="Transparent"
-                Grid.ColumnSpan="3"
-                Grid.Row="4"
-                HasUnevenRows="true"
-                BackgroundColor="White"
-                x:Name="ListViewMenu">
-                <ListView.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions> 
-                            <ColumnDefinition Width="*"/> 
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10"/> 
-                            <RowDefinition Height="Auto"/> 
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </ListView.Header>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="30, 15 , 0, 10" Spacing="20" Orientation="Horizontal">
-                                <Image Source="{Binding Icon}"  HeightRequest="50" WidthRequest="50" VerticalOptions="Center"/>
-                                <Label Text="{Binding Title}" TextColor="#888888" FontSize="23" VerticalOptions="Center"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+    Padding="0"
+    BackgroundColor="Transparent"> 
+     <ContentPage.Content>  
+         <RelativeLayout>
+           <Image x:Name="ImageBgMenu" Opacity="1"  VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" Aspect="AspectFill"
+                       RelativeLayout.WidthConstraint=
+                    "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                       RelativeLayout.HeightConstraint=
+                    "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+         
+           <Grid RelativeLayout.WidthConstraint=
+                "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   RelativeLayout.HeightConstraint=
+                "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+             <ListView
+                  SeparatorColor="Transparent"
+                  HasUnevenRows="true"
+                  BackgroundColor="Transparent"
+                  x:Name="ListViewMenu">
+               <ListView.Header>
+                 <Grid>
+                   <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                   </Grid.ColumnDefinitions>
+                   <Grid.RowDefinitions>
+                     <RowDefinition Height="10"/>
+                     <RowDefinition Height="Auto"/>
+                   </Grid.RowDefinitions>
+                 </Grid>
+               </ListView.Header>
+               <ListView.ItemTemplate>
+                 <DataTemplate>
+                   <ViewCell>
+                     <StackLayout Padding="30, 15 , 0, 10" Spacing="20" Orientation="Horizontal" BackgroundColor="{Binding BackgroundColor}">
+                       <Image Source="{Binding Icon}"  HeightRequest="50" WidthRequest="50" VerticalOptions="Center"/>
+                       <labels:CustomLabel Text="{Binding Title}"  TextColor="{Binding TextColor}" FontSize="30" VerticalOptions="Center"/>
+                     </StackLayout>
+                   </ViewCell>
+                 </DataTemplate>
+               </ListView.ItemTemplate>
+             </ListView> 
+           
+           </Grid>
+         </RelativeLayout> 
     </ContentPage.Content>
 </ContentPage>

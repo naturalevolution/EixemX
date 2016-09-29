@@ -22,7 +22,7 @@ namespace EixemX.Pages.Authentication
 
         private Layout CreatePage()
         {
-            var linkToAuthentication = ComponentFactories.Buttons.TransparentDefault(TextResources.Button_SignIn, ViewModel.SignInClicked); 
+            var linkToAuthentication = ComponentFactories.Buttons.TransparentRound(TextResources.Button_SignIn, ViewModel.SignInClicked); 
 
             var emailEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Email);
             emailEntry.SetBinding(Entry.TextProperty, "Username", BindingMode.TwoWay);
@@ -40,9 +40,9 @@ namespace EixemX.Pages.Authentication
 
             var titleLayout = ComponentFactories.Layouts.TitleLayout(ComponentFactories.Images.WhiteLogoSmall(), backArrowButton);
 
-            var fieldsLayout = ComponentFactories.Layouts.LayoutFields(messageLabel, emailEntry, passwordEntry);
+            var fieldsLayout = ComponentFactories.Layouts.FormFields(messageLabel, emailEntry, passwordEntry);
 
-            var buttonsLayout = ComponentFactories.Layouts.LayoutButtons(linkToPasswordForget, linkToAuthentication);
+            var buttonsLayout = ComponentFactories.Layouts.FormButtons(linkToPasswordForget, linkToAuthentication);
 
 
             var content = new StackLayout

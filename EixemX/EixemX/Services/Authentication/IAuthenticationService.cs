@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EixemX.Services.Account;
+using EixemX.ViewModels.Home;
 
 namespace EixemX.Services.Authentication
 {
@@ -16,5 +17,7 @@ namespace EixemX.Services.Authentication
         Task<bool> RegisterAsync(RegistrationModel model);
 
         Task<bool> PasswordForgetAsync(string email);
+
+        Task<UserAccountModel> GetUserAccount();
     }
 }

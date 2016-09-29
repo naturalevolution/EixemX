@@ -10,6 +10,6 @@
         Retirer,
         About,
         Contact, 
-        Professional
+        Professional 
     }
 }

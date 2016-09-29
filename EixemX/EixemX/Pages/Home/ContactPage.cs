@@ -1,4 +1,5 @@
-﻿using EixemX.Factories;
+﻿using EixemX.Controls.Labels;
+using EixemX.Factories;
 using EixemX.Helpers.Constants;
 using EixemX.Pages.Base;
 using EixemX.Pages.Menus;
@@ -14,13 +15,13 @@ namespace EixemX.Pages.Home
             BindingContext = new ContactViewModel(Navigation);
 
              
-            var label = new Label
+            var label = new CustomLabel
             {
                 Text = "ContactPage",
                 TextColor = Color.White
             };
 
-            Content = ComponentFactories.Layouts.ContentWithNavigation(ViewModel.NavigationMenuClicked,
+            Content = ComponentFactories.Layouts.NavigationBarMenuLogoAccount(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
                 ViewModel.NavigationAccountClicked, label);
         } 

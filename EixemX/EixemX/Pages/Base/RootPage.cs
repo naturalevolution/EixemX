@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using EixemX.Constants;
 using EixemX.Controls.Menus;
-using EixemX.Controls.Navigations;
 using EixemX.Factories;
 using EixemX.Pages.Home;
 using EixemX.Pages.Menus;

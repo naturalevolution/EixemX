@@ -1,4 +1,5 @@
-﻿using EixemX.ViewModels.Base;
+﻿using System;
+using EixemX.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace EixemX.ViewModels.Home
@@ -8,6 +9,18 @@ namespace EixemX.ViewModels.Home
         public DashboardViewModel(INavigation navigation) : base(navigation)
         { 
         }
-
+         
+        public void BorrowDetailClicked(object sender, EventArgs e)
+        {
+            LogDebug("BorrowDetailClicked");
+        }
+        public void InterestDetailClicked(object sender, EventArgs e)
+        {
+            LogDebug("InterestDetailClicked");
+        }
+        public void LoanDetailClicked(object sender, EventArgs e)
+        {
+            LogDebug("LoanDetailClicked");
+        }
     }
 }

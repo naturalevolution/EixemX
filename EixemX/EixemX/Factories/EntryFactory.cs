@@ -39,7 +39,7 @@ namespace EixemX.Factories
                 HorizontalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center,
-                FontSize = PaletteText.FontSizeEntry,
+                FontSize = PaletteText.FontSizeM,
                 MaxLength = 200,
                 FontType = fontType,
                 HeightRequest = 45

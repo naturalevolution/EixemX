@@ -62,6 +62,69 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adresse de facturation.
+        /// </summary>
+        internal static string Account_Address_Title {
+            get {
+                return ResourceManager.GetString("Account_Address_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banque.
+        /// </summary>
+        internal static string Account_BankCard_FieldBank {
+            get {
+                return ResourceManager.GetString("Account_BankCard_FieldBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numéro.
+        /// </summary>
+        internal static string Account_BankCard_FieldCardNumber {
+            get {
+                return ResourceManager.GetString("Account_BankCard_FieldCardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expire le.
+        /// </summary>
+        internal static string Account_BankCard_FieldDateExpire {
+            get {
+                return ResourceManager.GetString("Account_BankCard_FieldDateExpire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RIB.
+        /// </summary>
+        internal static string Account_BankCard_FieldIban {
+            get {
+                return ResourceManager.GetString("Account_BankCard_FieldIban", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carte personnelle.
+        /// </summary>
+        internal static string Account_BankCard_IbanTitle {
+            get {
+                return ResourceManager.GetString("Account_BankCard_IbanTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carte bancaire.
+        /// </summary>
+        internal static string Account_BankCard_Title {
+            get {
+                return ResourceManager.GetString("Account_BankCard_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date de naissance.
         /// </summary>
         internal static string Account_Field_Birthday {
@@ -107,11 +170,29 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Revenu mensuel.
+        /// </summary>
+        internal static string Account_Finance_Title {
+            get {
+                return ResourceManager.GetString("Account_Finance_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mot de passe oublié ?.
         /// </summary>
         internal static string Account_Link_PasswordForget {
             get {
                 return ResourceManager.GetString("Account_Link_PasswordForget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MON PROFIL.
+        /// </summary>
+        internal static string Account_ProfileTitle {
+            get {
+                return ResourceManager.GetString("Account_ProfileTitle", resourceCulture);
             }
         }
         
@@ -161,7 +242,7 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vous avez reçu un mail vous permettant de modifier votre mot de passe.
+        ///   Looks up a localized string similar to Vous allez recevoir un mail vous permettant de réinitialiser votre mot de passe.
         /// </summary>
         internal static string Alert_Authentication_PasswordEmailSendMessage {
             get {
@@ -287,6 +368,15 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EIXEM.
+        /// </summary>
+        internal static string Application_Name {
+            get {
+                return ResourceManager.GetString("Application_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour.
         /// </summary>
         internal static string Button_Back {
@@ -377,7 +467,61 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A propos.
+        ///   Looks up a localized string similar to DISPONIBLE.
+        /// </summary>
+        internal static string Dashboard_BorrowAvailable {
+            get {
+                return ResourceManager.GetString("Dashboard_BorrowAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jusqu&apos;au {0}.
+        /// </summary>
+        internal static string Dashboard_BorrowAvailableTo {
+            get {
+                return ResourceManager.GetString("Dashboard_BorrowAvailableTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to détails.
+        /// </summary>
+        internal static string Dashboard_Details {
+            get {
+                return ResourceManager.GetString("Dashboard_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INTÉRÊTS.
+        /// </summary>
+        internal static string Dashboard_Interest {
+            get {
+                return ResourceManager.GetString("Dashboard_Interest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MIS À DISPOSITION.
+        /// </summary>
+        internal static string Dashboard_Loan {
+            get {
+                return ResourceManager.GetString("Dashboard_Loan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} €.
+        /// </summary>
+        internal static string Field_PriceEuro {
+            get {
+                return ResourceManager.GetString("Field_PriceEuro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to À propos.
         /// </summary>
         internal static string Menu_About {
             get {

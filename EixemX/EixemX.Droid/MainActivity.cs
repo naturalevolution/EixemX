@@ -20,7 +20,7 @@ namespace EixemX.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            global::Xamarin.Forms.Forms.SetTitleBarVisibility(Xamarin.Forms.AndroidTitleBarVisibility.Never); 
+            global::Xamarin.Forms.Forms.SetTitleBarVisibility(Xamarin.Forms.AndroidTitleBarVisibility.Never);
 
             /*var container = new SimpleContainer();
             container.Register<IDevice>(t => AndroidDevice.CurrentDevice);

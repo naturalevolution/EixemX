@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using EixemX.Constants;
-using EixemX.Controls.Navigations;
 using EixemX.Factories;
 using EixemX.Helpers;
 using EixemX.Localization;
@@ -10,6 +9,7 @@ using EixemX.Pages.Base;
 using EixemX.Pages.Guest;
 using EixemX.Services;
 using EixemX.Services.Authentication;
+using EixemX.ViewModels.Home;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
@@ -22,7 +22,7 @@ namespace EixemX
         {
             get { return app; }
         }
-
+         
         readonly IAuthenticationService _AuthenticationService;
 
         public App()
