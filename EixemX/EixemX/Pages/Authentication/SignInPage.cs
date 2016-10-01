@@ -31,14 +31,13 @@ namespace EixemX.Pages.Authentication
             passwordEntry.IsPassword = true;
             passwordEntry.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
             
-            var messageLabel = ComponentFactories.Labels.LabelMessage();
-            messageLabel.SetBinding(Label.TextProperty, "DisplayMessage", BindingMode.TwoWay);
+            var messageLabel = GetMessageLabel();
 
             var linkToPasswordForget = ComponentFactories.Buttons.Link(TextResources.Account_Link_PasswordForget, ViewModel.PasswordForgetClicked);
                 
             var backArrowButton = ComponentFactories.Buttons.ArrowLeft(ViewModel.BackButtonClicked);
 
-            var titleLayout = ComponentFactories.Layouts.TitleLayout(ComponentFactories.Images.WhiteLogoSmall(), backArrowButton);
+            var titleLayout = ComponentFactories.Buttons.TitleLayout(ComponentFactories.Images.WhiteLogoSmall(), backArrowButton);
 
             var fieldsLayout = ComponentFactories.Layouts.FormFields(messageLabel, emailEntry, passwordEntry);
 

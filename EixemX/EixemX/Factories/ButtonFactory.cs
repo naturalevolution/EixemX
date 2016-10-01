@@ -26,7 +26,8 @@ namespace EixemX.Factories
         ImageButton ArrowRight(EventHandler eventClicked);
         AbsoluteLayout TitleCirleButtons(string text, params CustomButton[] buttons);
         CustomButton TextCircleButton(string text, EventHandler evenClicked);
-        AbsoluteLayout TitleLayout(string text, EventHandler backButton);
+        Layout TitleLayout(string text, EventHandler backButton);
+        Layout TitleLayout(Image image, ImageButton backButton);
     }
 
     public class ButtonFactory : IButtonFactory
@@ -178,8 +179,8 @@ namespace EixemX.Factories
             {
                 BackgroundColor = Palette.Transparent,
                 Source = ComponentFactories.Images.ArrowLeft(),
-                VerticalOptions = LayoutOptions.EndAndExpand,
-                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 HeightRequest = 50,
                 WidthRequest = 50
             };
@@ -200,56 +201,55 @@ namespace EixemX.Factories
             return result; 
         }
 
-        public AbsoluteLayout TitleLayout(string text, EventHandler backButton)
-        {
 
+        public Layout TitleLayout(Image image, ImageButton backButton)
+        {
             var result = new AbsoluteLayout
             {
                 BackgroundColor = Palette.Transparent,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
+            AbsoluteLayout.SetLayoutBounds(image,
+                new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(image, AbsoluteLayoutFlags.PositionProportional);
+
+            AbsoluteLayout.SetLayoutBounds(backButton,
+                new Rectangle(0.1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            AbsoluteLayout.SetLayoutFlags(backButton, AbsoluteLayoutFlags.PositionProportional);
+
+            result.Children.Add(backButton);
+            result.Children.Add(image);
+
+            return result;
+        }
+        public Layout TitleLayout(string text, EventHandler backButton)
+        { 
+            var grid = new Grid
+            { 
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = 20
+            };
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Absolute) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) });
 
             var label = new CustomLabel
             {
                 Text = text,
                 TextColor = Palette.White,
-                FontSize = PaletteText.FontSizeL,
+                FontSize = PaletteText.FontSizeML,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalTextAlignment = TextAlignment.Center
             };
+            grid.Children.Add(ArrowLeft(backButton), 0, 0);
+            grid.Children.Add(label, 1, 0);
 
-            AbsoluteLayout.SetLayoutBounds(label, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
-            result.Children.Add(label);
-
-            var arrowLeft = ArrowLeft(backButton);
-            AbsoluteLayout.SetLayoutBounds(arrowLeft, new Rectangle(0, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(arrowLeft, AbsoluteLayoutFlags.PositionProportional);
-            result.Children.Add(label);
-            return result;
-            /*
-            return new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.Center,
-                Padding = 0,
-                Spacing = 0,
-                Children =
-                {
-                    ArrowLeft(backButton),
-                    new CustomLabel
-                    {
-                        Text = text,
-                        TextColor = Palette.White,
-                        FontSize = PaletteText.FontSizeL,
-                        VerticalTextAlignment = TextAlignment.Center,
-                        HorizontalTextAlignment = TextAlignment.Center
-                    }
-                }
-            };*/
+            return grid;
         }
+
         public AbsoluteLayout TitleCirleButtons(string text, params CustomButton[] buttons)
         {
             var result = new AbsoluteLayout

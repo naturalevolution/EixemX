@@ -145,7 +145,7 @@
     <value>Quitter</value>
   </data>
   <data name="Alert_Authentication_InProgress" xml:space="preserve">
-    <value>Connexion en cours ...</value>
+    <value>Vérification des identifiants ...</value>
   </data>
   <data name="Button_SignIn" xml:space="preserve">
     <value>Se connecter</value>
@@ -311,5 +311,53 @@
   </data>
   <data name="Account_BankCard_IbanTitle" xml:space="preserve">
     <value>Carte personnelle</value>
+  </data>
+  <data name="Borrow_NextRefound" xml:space="preserve">
+    <value>PROCHAIN REMBOURSEMENT</value>
+  </data>
+  <data name="Borrow_RemainingCapacity" xml:space="preserve">
+    <value>CAPACITÉ D'EMPRUNT RESTANTE</value>
+  </data>
+  <data name="Emprunter_BorrowButton" xml:space="preserve">
+    <value>Emprunter</value>
+  </data>
+  <data name="Borrow_Title" xml:space="preserve">
+    <value>EMPRUNTER</value>
+  </data>
+  <data name="BorrowCreateEnterAmout" xml:space="preserve">
+    <value>Capacité d'emprunt maximum {0} €</value>
+  </data>
+  <data name="BorrowCreateEnterAmoutTitle" xml:space="preserve">
+    <value>Entrez le montant désiré :</value>
+  </data>
+  <data name="BorrowCreateFinalMessage" xml:space="preserve">
+    <value>Le transfert est en cours ...</value>
+  </data>
+  <data name="BorrowCreateNoCentimes" xml:space="preserve">
+    <value>Les montants ne peuvent comporter de centimes</value>
+  </data>
+  <data name="BorrowCreateValidateAmount" xml:space="preserve">
+    <value>VALIDER VOTRE DEMANDE</value>
+  </data>
+  <data name="BorrowCreateValidateAmountRequested" xml:space="preserve">
+    <value>Montant demandé : {0} €</value>
+  </data>
+  <data name="BorrowCreateValidatePasswordEnterCode" xml:space="preserve">
+    <value>Entrez votre mot de passe</value>
+  </data>
+  <data name="BorrowCreateValidatePasswordTitle" xml:space="preserve">
+    <value>Mot de passe oublié ?</value>
+  </data>
+  <data name="Button_Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Button_SendPassword" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="PasswordForget_EnterEmail" xml:space="preserve">
+    <value>Entrez votre mail</value>
+  </data>
+  <data name="PasswordForget_Title" xml:space="preserve">
+    <value>MOT DE PASSE OUBLIÉ</value>
   </data>
 </root>

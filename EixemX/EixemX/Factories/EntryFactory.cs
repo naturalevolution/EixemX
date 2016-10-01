@@ -8,11 +8,7 @@ using Xamarin.Forms;
 namespace EixemX.Factories
 {
     public class EntryFactory : IEntryFactory
-    {
-        public CustomEntry EntryDefaultText(string text, FontType fontType)
-        {
-            return GenerateEntryDefault(text, fontType, Keyboard.Text);
-        }
+    { 
 
         public CustomEntry EntryDefaultEmail(string text)
         {
@@ -24,9 +20,14 @@ namespace EixemX.Factories
             return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Default);
         }
 
-        public CustomEntry EntryDefaultText(string text)
+        public CustomEntry EntryDefaultAmount(string text)
         {
-            return EntryDefaultText(text, FontType.TextaNarrowRegular);
+            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Numeric);
+        }
+
+        public CustomEntry EntryDefaultText(string text)
+        { 
+            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Text);
         }
 
         private CustomEntry GenerateEntryDefault(string text, FontType fontType, Keyboard keyboard)
@@ -50,10 +51,10 @@ namespace EixemX.Factories
     }
 
     public interface IEntryFactory
-    {
-        CustomEntry EntryDefaultText(string text, FontType fontType);
+    { 
         CustomEntry EntryDefaultText(string text);
         CustomEntry EntryDefaultEmail(string text);
         CustomEntry EntryPlainPassword(string text);
+        CustomEntry EntryDefaultAmount(string text);
     }
 }

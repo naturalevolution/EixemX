@@ -38,6 +38,7 @@
     <Compile Include="Account\UserAccountModel.cs" />
     <Compile Include="Base\BaseModel.cs" />
     <Compile Include="Account\RegistrationModel.cs" />
+    <Compile Include="Borrow\CreateBorrowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

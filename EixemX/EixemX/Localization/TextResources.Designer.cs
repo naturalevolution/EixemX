@@ -206,7 +206,7 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Connexion en cours ....
+        ///   Looks up a localized string similar to Vérification des identifiants ....
         /// </summary>
         internal static string Alert_Authentication_InProgress {
             get {
@@ -377,6 +377,105 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PROCHAIN REMBOURSEMENT.
+        /// </summary>
+        internal static string Borrow_NextRefound {
+            get {
+                return ResourceManager.GetString("Borrow_NextRefound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CAPACITÉ D&apos;EMPRUNT RESTANTE.
+        /// </summary>
+        internal static string Borrow_RemainingCapacity {
+            get {
+                return ResourceManager.GetString("Borrow_RemainingCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMPRUNTER.
+        /// </summary>
+        internal static string Borrow_Title {
+            get {
+                return ResourceManager.GetString("Borrow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacité d&apos;emprunt maximum {0} €.
+        /// </summary>
+        internal static string BorrowCreateEnterAmout {
+            get {
+                return ResourceManager.GetString("BorrowCreateEnterAmout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entrez le montant désiré :.
+        /// </summary>
+        internal static string BorrowCreateEnterAmoutTitle {
+            get {
+                return ResourceManager.GetString("BorrowCreateEnterAmoutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le transfert est en cours ....
+        /// </summary>
+        internal static string BorrowCreateFinalMessage {
+            get {
+                return ResourceManager.GetString("BorrowCreateFinalMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Les montants ne peuvent comporter de centimes.
+        /// </summary>
+        internal static string BorrowCreateNoCentimes {
+            get {
+                return ResourceManager.GetString("BorrowCreateNoCentimes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VALIDER VOTRE DEMANDE.
+        /// </summary>
+        internal static string BorrowCreateValidateAmount {
+            get {
+                return ResourceManager.GetString("BorrowCreateValidateAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Montant demandé : {0} €.
+        /// </summary>
+        internal static string BorrowCreateValidateAmountRequested {
+            get {
+                return ResourceManager.GetString("BorrowCreateValidateAmountRequested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entrez votre mot de passe.
+        /// </summary>
+        internal static string BorrowCreateValidatePasswordEnterCode {
+            get {
+                return ResourceManager.GetString("BorrowCreateValidatePasswordEnterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mot de passe oublié ?.
+        /// </summary>
+        internal static string BorrowCreateValidatePasswordTitle {
+            get {
+                return ResourceManager.GetString("BorrowCreateValidatePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retour.
         /// </summary>
         internal static string Button_Back {
@@ -458,11 +557,29 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Envoyer.
+        /// </summary>
+        internal static string Button_SendPassword {
+            get {
+                return ResourceManager.GetString("Button_SendPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se connecter.
         /// </summary>
         internal static string Button_SignIn {
             get {
                 return ResourceManager.GetString("Button_SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valider.
+        /// </summary>
+        internal static string Button_Validate {
+            get {
+                return ResourceManager.GetString("Button_Validate", resourceCulture);
             }
         }
         
@@ -508,6 +625,15 @@ namespace EixemX.Localization {
         internal static string Dashboard_Loan {
             get {
                 return ResourceManager.GetString("Dashboard_Loan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emprunter.
+        /// </summary>
+        internal static string Emprunter_BorrowButton {
+            get {
+                return ResourceManager.GetString("Emprunter_BorrowButton", resourceCulture);
             }
         }
         
@@ -598,6 +724,24 @@ namespace EixemX.Localization {
         internal static string Menu_Retirer {
             get {
                 return ResourceManager.GetString("Menu_Retirer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entrez votre mail.
+        /// </summary>
+        internal static string PasswordForget_EnterEmail {
+            get {
+                return ResourceManager.GetString("PasswordForget_EnterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MOT DE PASSE OUBLIÉ.
+        /// </summary>
+        internal static string PasswordForget_Title {
+            get {
+                return ResourceManager.GetString("PasswordForget_Title", resourceCulture);
             }
         }
         

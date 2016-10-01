@@ -61,17 +61,25 @@
     <Compile Include="Controls\Menus\MenuType.cs" />
     <Compile Include="Pages\Authentication\RegistrationPasswordConfirmPage.cs" />
     <Compile Include="Pages\Authentication\RegistrationPasswordPage.cs" />
+    <Compile Include="Pages\Borrow\CreateBorrowPasswordForgetPage.cs" />
+    <Compile Include="Pages\Borrow\CreateBorrowFinalPage.cs" />
+    <Compile Include="ViewModels\Borrow\CreateBorrowFinalViewModel.cs" />
+    <Compile Include="ViewModels\Borrow\CreateBorrowPasswordForgetViewModel.cs" />
+    <Compile Include="ViewModels\Borrow\CreateBorrowSelectAmountViewModel.cs" />
     <Compile Include="Pages\Home\AboutPage.cs" />
     <Compile Include="Pages\Menus\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Account\AccountDetailPage.cs" />
     <Compile Include="ViewModels\Account\AccountDetailViewModel.cs" />
+    <Compile Include="Pages\Borrow\CreateBorrowValidateAmountPage.cs" />
+    <Compile Include="ViewModels\Borrow\CreateBorrowValidateAmountViewModel.cs" />
     <Compile Include="ViewModels\Home\AboutViewModel.cs" />
     <Compile Include="Pages\Home\ContactPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModelNavigation.cs" />
     <Compile Include="ViewModels\Home\ContactViewModel.cs" />
-    <Compile Include="Pages\Home\EmprunterPage.cs" />
+    <Compile Include="Pages\Borrow\EmprunterPage.cs" />
+    <Compile Include="Pages\Borrow\CreateBorrowSelectAmountPage.cs" />
     <Compile Include="ViewModels\Home\EmprunterViewModel.cs" />
     <Compile Include="Pages\Home\HistoryPage.cs" />
     <Compile Include="ViewModels\Home\HistoryViewModel.cs" />

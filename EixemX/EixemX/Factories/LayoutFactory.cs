@@ -47,27 +47,6 @@ namespace EixemX.Factories
         }
 
 
-        public Layout TitleLayout(Image image, ImageButton backButton)
-        {
-            var result = new AbsoluteLayout
-            {
-                BackgroundColor = Palette.Transparent,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-            AbsoluteLayout.SetLayoutBounds(image,
-                new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(image, AbsoluteLayoutFlags.PositionProportional);
-
-            AbsoluteLayout.SetLayoutBounds(backButton,
-                new Rectangle(0.1, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-            AbsoluteLayout.SetLayoutFlags(backButton, AbsoluteLayoutFlags.PositionProportional);
-
-            result.Children.Add(backButton);
-            result.Children.Add(image);
-
-            return result;
-        }
 
         public Layout FormFields(params View[] views)
         {
@@ -100,9 +79,9 @@ namespace EixemX.Factories
             };
             layout.Children.Add(screenBg,
                 Constraint.Constant(20),
-                Constraint.Constant(20),
+                Constraint.Constant(0),
                 Constraint.RelativeToParent(parent => { return parent.Width - 40; }),
-                Constraint.RelativeToParent(parent => { return parent.Height - 40; }));
+                Constraint.RelativeToParent(parent => { return parent.Height; }));
              
                 layout.Children.Add(view,
                     Constraint.Constant(0),
@@ -134,13 +113,26 @@ namespace EixemX.Factories
         {
             var result = new StackLayout
             {
+                VerticalOptions = LayoutOptions.FillAndExpand,
                 Children =
                 {
                     NavigationBarButtons(menuClicked, logoClicked, accountClicked)
                 }
             };
+
+            var contentScrollView = new StackLayout
+            { 
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
             foreach (var view in views)
-                result.Children.Add(view);
+                contentScrollView.Children.Add(view);
+
+            result.Children.Add(new ScrollView
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand, 
+                Content = contentScrollView
+            });
+
 
             return LayoutWithBackground(result);
         } 
@@ -162,7 +154,28 @@ namespace EixemX.Factories
             return result;
         }
 
-        
+        public Layout Separator()
+        {
+           return new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Start,
+                BackgroundColor = Color.White,
+                Padding = 0,
+                Spacing = 10,
+                Children =
+                {
+                    new BoxView
+                    {
+                        HeightRequest = 1,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.Center,
+                        BackgroundColor = Palette.White
+                    }
+                }
+            };
+        }
+
 
         private Layout NavigationBarButtons(EventHandler menuClicked, EventHandler logoClicked,
             EventHandler accountClicked)
@@ -233,8 +246,6 @@ namespace EixemX.Factories
 
         Layout TitleLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
 
-
-        Layout TitleLayout(Image image, ImageButton backButton);
         Layout FormFields(params View[] views);
         Layout FormBackground(View view);
         Layout FormButtons(params View[] views);
@@ -244,6 +255,7 @@ namespace EixemX.Factories
             EventHandler accountClicked,
             params View[] views);
 
-        Layout TitleSubLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null); 
+        Layout TitleSubLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
+        Layout Separator();
     }
 }

@@ -18,6 +18,17 @@ namespace EixemX.ViewModels.Base
             return App.CurrentApp.MainPage as RootPage;
         }
 
+        protected string DisplayDouble(double value)
+        {
+            return string.Format("{0:0.##}", value);
+        }
+
+        public virtual void BackButtonClicked(object sender, EventArgs e)
+        {
+            LogDebug("BackButtonClicked");
+            App.GoToRoot();
+        }
+
         public virtual void NavigationMenuClicked(object sender, EventArgs e)
         {
             LogDebug("NavigationMenuClicked");

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EixemX.Constants;
 using EixemX.Controls.Menus;
 using EixemX.Factories;
+using EixemX.Pages.Borrow;
 using EixemX.Pages.Home;
 using EixemX.Pages.Menus;
 using EixemX.ViewModels.Base;

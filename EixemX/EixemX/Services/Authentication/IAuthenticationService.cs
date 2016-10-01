@@ -18,6 +18,6 @@ namespace EixemX.Services.Authentication
 
         Task<bool> PasswordForgetAsync(string email);
 
-        Task<UserAccountModel> GetUserAccount();
+        Task<UserAccountModel> GetUserAccount(); 
     }
 }

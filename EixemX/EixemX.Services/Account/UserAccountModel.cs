@@ -21,8 +21,10 @@ namespace EixemX.Services.Account
 
     public class UserDetailModel : BaseModel
     {
+        public string Email { get; set; }
         public string Lastname { get; set; }
         public string Firstname { get; set; }
+        public DateTime DateBirth { get; set; }
         public DateTime DateInscription { get; set; }
         public UserAddressModel Address { get; set; }
         public UserBankModel Bank { get; set; }
@@ -36,8 +38,10 @@ namespace EixemX.Services.Account
         public void Update(UserDetailModel model)
         {
             Lastname = model.Lastname;
+            Email = model.Email;
             Firstname = model.Firstname;
             DateInscription = model.DateInscription;
+            DateBirth = model.DateBirth;
             Address = model.Address;
             Bank = model.Bank;
             Finance = model.Finance;
@@ -117,11 +121,14 @@ namespace EixemX.Services.Account
     public class BorrowAccountModel : BaseModel
     {
         public DateTime DateAvailable { get; set; }
-        public double Amount { get; set; }
+        public DateTime DateNextRefound { get; set; }
+        public double AmountAvailable { get; set; }
+        public double AmountRemainingCapacity { get; set; }
 
-        public void AddBorrow(double value, DateTime availableTo)
+        public void AddBorrow(double amountAvailable, double amountRemainingCapacity, DateTime availableTo)
         {
-            Amount = value;
+            AmountAvailable = amountAvailable;
+            AmountRemainingCapacity = amountRemainingCapacity;
             DateAvailable = availableTo;
         }
 
@@ -130,9 +137,19 @@ namespace EixemX.Services.Account
             return DateAvailable.ToString("d");
         }
 
-        public string DisplayAmount()
+        public string DisplayAmountAvailable()
         {
-            return DisplayDouble(Amount);
+            return DisplayDouble(AmountAvailable);
+        }
+
+        public string DisplayAmountRemainingCapacity()
+        {
+            return DisplayDouble(AmountRemainingCapacity);
+        }
+
+        public string ToDateNextRefound()
+        {
+            return DateNextRefound.ToString("d");
         }
     }
 }

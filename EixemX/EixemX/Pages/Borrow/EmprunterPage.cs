@@ -8,59 +8,69 @@ using EixemX.Pages.Base;
 using EixemX.ViewModels.Home;
 using Xamarin.Forms;
 
-namespace EixemX.Pages.Home
+namespace EixemX.Pages.Borrow
 {
-    public class DashboardPage : ModelBoundContentPage<DashboardViewModel>
+    public class EmprunterPage : ModelBoundContentPage<EmprunterViewModel>
     {
-        public DashboardPage()
+        public EmprunterPage()
         {
-            BindingContext = new DashboardViewModel(Navigation);
-
-            // Catch the login success message from the MessagingCenter.
-            // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
-
-            /*Device.OnPlatform(Android:() =>
-                    MessagingCenter.Subscribe<SignInViewModel>(this, MessagingServiceConstants.AUTHENTICATED, sender => Auth2())); 
-*/
+            BindingContext = new EmprunterViewModel(Navigation);
+            
             Content = CreatePage();
         }
 
-        private Layout CreatePage()
-        {
+        public Layout CreatePage()
+        { 
+            var titleLayout = ComponentFactories.Buttons.TitleLayout(TextResources.Borrow_Title, ViewModel.BackButtonClicked);
+
             string subTitle = string.Format(TextResources.Dashboard_BorrowAvailableTo, ViewModel.UserAccountModel.Borrow.ToDateAvailable());
 
-            var layout = new StackLayout
+            var borrowLayout = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Start,
-                Padding = new Thickness(0, 0, 0, 0),
-                Spacing = 0,
+                BackgroundColor = Color.Blue,
+                Padding = 0,
+                Spacing = 5,
                 Children =
-                { 
+                {
+                    ComponentFactories.Layouts.Separator(),
                     GenerateBox(TextResources.Dashboard_BorrowAvailable, subTitle, ViewModel.UserAccountModel.Borrow.DisplayAmountAvailable(), ViewModel.BorrowDetailClicked),
-                    GenerateSeparator(),
-                    GenerateBox(TextResources.Dashboard_Loan, string.Empty, ViewModel.UserAccountModel.Loan.DisplayAmount(), ViewModel.LoanDetailClicked),
-                    GenerateSeparator(),
-                    GenerateBox(TextResources.Dashboard_Interest, string.Empty,  ViewModel.UserAccountModel.Interest.DisplayAmount(), ViewModel.InterestDetailClicked)
+                    ComponentFactories.Layouts.Separator(),
+                    GenerateBox(TextResources.Borrow_RemainingCapacity, string.Empty, ViewModel.UserAccountModel.Borrow.DisplayAmountRemainingCapacity(), ViewModel.RemainingCapacityDetailClicked),
+                    ComponentFactories.Layouts.Separator(),
+                    GenerateBox(TextResources.Borrow_NextRefound, ViewModel.UserAccountModel.Borrow.ToDateNextRefound(), string.Empty, ViewModel.NextRefoundDetailClicked),
+                    ComponentFactories.Layouts.Separator() 
+                   }
+            };
+
+            var buttonLayout = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = 20,
+                BackgroundColor = Color.Red,
+                Children =
+                {
+                    ComponentFactories.Buttons.TransparentRound(TextResources.Emprunter_BorrowButton, ViewModel.StartBorrowClicked)
+                }
+            };
+            var result = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Children =
+                {
+                    titleLayout,
+                    borrowLayout,
+                    buttonLayout
                 }
             };
 
-            var result = ComponentFactories.Layouts.NavigationBarMenuLogoAccount(ViewModel.NavigationMenuClicked,
+           return ComponentFactories.Layouts.NavigationBarMenuLogoAccount(ViewModel.NavigationMenuClicked,
                 ViewModel.NavigationLogoClicked,
-                ViewModel.NavigationAccountClicked, layout);
-
-            return result;
+                ViewModel.NavigationAccountClicked, result);
         }
-
-        private BoxView GenerateSeparator()
-        {
-            return new BoxView
-            {
-                HeightRequest = 1,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Palette.White
-            };
-        } 
 
         private Layout GenerateBox(string titleText, string subTitleText, string amount, EventHandler detailEvent)
         {
@@ -109,14 +119,14 @@ namespace EixemX.Pages.Home
                 }
             };
 
-            var result= new StackLayout
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    Padding = new Thickness(0, 15, 0, 0),
-                    Spacing = 10,
-                    BackgroundColor = Palette.Transparent
-                };
+            var result = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Padding = new Thickness(0, 15, 0, 0),
+                Spacing = 10,
+                BackgroundColor = Palette.Transparent
+            };
 
             result.Children.Add(title);
 
@@ -133,7 +143,7 @@ namespace EixemX.Pages.Home
             }
 
             result.Children.Add(price);
-            result.Children.Add(detail); 
+            result.Children.Add(detail);
 
             return result;
         }
