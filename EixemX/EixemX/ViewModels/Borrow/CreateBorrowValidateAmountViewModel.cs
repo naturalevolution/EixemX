@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using EixemX.Localization;
 using EixemX.Pages.Borrow;
 using EixemX.Services.Borrow;
@@ -45,17 +46,16 @@ namespace EixemX.ViewModels.Borrow
 
                     if (await authenticationService.AuthenticateAsync(UserAccountModel.User.Email, Password))
                     {
-
                         await PushAsync(new CreateBorrowFinalPage(Model)); 
                     }
                     else
                     {
-                        DisplayMessage = TextResources.Alert_Authentication_PasswordForgetEmailNotExist;
+                        DisplayMessage = TextResources.Alert_Borrow_UnableToAuthenticate;
                     }
                 }
                 else
                 {
-                    DisplayMessage = TextResources.Alert_Authentication_PasswordForgetEmail;
+                    DisplayMessage = TextResources.Alert_Borrow_MandatoryPassword;
                 }
             });
         }

@@ -134,7 +134,11 @@ namespace EixemX.Services.Account
 
         public string ToDateAvailable()
         {
-            return DateAvailable.ToString("d");
+            return DateAvailable.ToString("dd/MM/yyyy");
+        }
+        public string ToDateNextRefound()
+        {
+            return DateNextRefound.ToString("dd/MM/yyyy");
         }
 
         public string DisplayAmountAvailable()
@@ -147,9 +151,10 @@ namespace EixemX.Services.Account
             return DisplayDouble(AmountRemainingCapacity);
         }
 
-        public string ToDateNextRefound()
-        {
-            return DateNextRefound.ToString("d");
+
+        public string DisplayDayNextRefund()
+        { 
+            return string.Format("{0:dd}", DateNextRefound.Day); 
         }
     }
 }

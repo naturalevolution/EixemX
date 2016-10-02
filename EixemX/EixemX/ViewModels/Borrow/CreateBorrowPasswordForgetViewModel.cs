@@ -6,11 +6,10 @@ using Xamarin.Forms;
 namespace EixemX.ViewModels.Borrow
 {
     public class CreateBorrowPasswordForgetViewModel : BaseViewModelNavigation
-    {
-        public string Email { get; set; }
-
+    { 
         public CreateBorrowPasswordForgetViewModel(INavigation navigation) : base(navigation)
-        { 
+        {
+            Username = UserAccountModel.User.Email;
         }
 
         private string _username;
@@ -32,9 +31,13 @@ namespace EixemX.ViewModels.Borrow
 
                     if (await authenticationService.PasswordForgetAsync(Username))
                     {
-                        await
-                            App.Current.MainPage.DisplayAlert(TextResources.Alert_Authentication_PasswordEmailSendTitle,
-                                TextResources.Alert_Authentication_PasswordEmailSendMessage, TextResources.Button_OK); 
+                        var result = App.Current.MainPage.DisplayAlert(TextResources.Alert_Authentication_PasswordEmailSendTitle,
+                                TextResources.Alert_Authentication_PasswordEmailSendMessage, TextResources.Button_OK);
+                        
+                        if (result.GetAwaiter().IsCompleted)
+                        {
+                            await PopAsync();
+                        } 
                     }
                     else
                     {

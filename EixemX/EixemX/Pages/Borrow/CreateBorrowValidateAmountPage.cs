@@ -24,15 +24,13 @@ namespace EixemX.Pages.Borrow
         {
             var titleLayout = ComponentFactories.Buttons.TitleLayout(TextResources.Borrow_Title, ViewModel.BackButtonClicked);
 
-            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty);
-            passwordEntry.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
+            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty, "Password"); 
 
             var borrowLayout = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Start,
-                BackgroundColor = Color.Blue,
-                Padding = 0,
+                Padding =new Thickness(30,0,30,0),
                 Spacing = 5,
                 Children =
                 {
@@ -50,6 +48,7 @@ namespace EixemX.Pages.Borrow
                         HorizontalTextAlignment = TextAlignment.Center,
                         FontSize = PaletteText.FontSizeM
                     },
+                    ComponentFactories.Layouts.Separator(10, Color.Transparent),
                     new CustomLabel
                     {
                         Text = TextResources.BorrowCreateValidatePasswordEnterCode,
@@ -63,21 +62,13 @@ namespace EixemX.Pages.Borrow
                 }
             };
 
-            var buttonLayout = new StackLayout
-            {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = 20,
-                BackgroundColor = Color.Red,
-                Children =
-                {
-                    ComponentFactories.Buttons.TransparentRound(TextResources.Button_Validate, ViewModel.ValidateBorrowClicked)
-                }
-            };
+            var buttonLayout = ComponentFactories.Buttons.TransparentRound(TextResources.Button_Validate,
+                ViewModel.ValidateBorrowClicked, new Thickness(50, 20, 50, 20)); 
+
             var result = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 Children =
                 {
                     titleLayout,
@@ -89,6 +80,12 @@ namespace EixemX.Pages.Borrow
             return ComponentFactories.Layouts.NavigationBarMenuLogoAccount(ViewModel.NavigationMenuClicked,
                  ViewModel.NavigationLogoClicked,
                  ViewModel.NavigationAccountClicked, result);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.Clear();
         }
     }
 }

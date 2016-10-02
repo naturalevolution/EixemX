@@ -1,4 +1,5 @@
 using System;
+using EixemX.Localization;
 using EixemX.Pages.Borrow;
 using EixemX.Services.Borrow;
 using EixemX.ViewModels.Base;
@@ -18,18 +19,21 @@ namespace EixemX.ViewModels.Borrow
         {
             get { return _amount; }
             set { SetProperty(ref _amount, value, "Amount"); }
-        }
-
-        public override async void BackButtonClicked(object sender, EventArgs e)
-        {
-            LogDebug("BackButtonClicked");
-            await PopAsync();
-        }
+        } 
 
         public async void ValidateBorrowClicked(object sender, EventArgs e)
         {
             LogDebug("ValidateBorrowClicked");
-            await PushAsync(new CreateBorrowValidateAmountPage(new CreateBorrowModel(Amount, UserAccountModel.User)));
+            if (!string.IsNullOrWhiteSpace(Amount))
+            {
+                await
+                    PushAsync(new CreateBorrowValidateAmountPage(new CreateBorrowModel(Amount, UserAccountModel.User)));
+            }
+            else
+            {
+                DisplayMessage = TextResources.Alert_Borrow_MandatoryAmount;
+            }
+
         }
     }
 }

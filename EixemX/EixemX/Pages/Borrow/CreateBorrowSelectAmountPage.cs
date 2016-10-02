@@ -15,22 +15,26 @@ namespace EixemX.Pages.Borrow
             BindingContext = new CreateBorrowSelectAmountViewModel(Navigation);
              
             Content = CreatePage(); 
+        } 
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.Clear();
         }
 
         private View CreatePage()
         {
             var titleLayout = ComponentFactories.Buttons.TitleLayout(TextResources.Borrow_Title, ViewModel.BackButtonClicked);
 
-            var amountEntry = ComponentFactories.Entries.EntryDefaultAmount(string.Empty);
-            amountEntry.SetBinding(Entry.TextProperty, "Amount", BindingMode.TwoWay);
+            var amountEntry = ComponentFactories.Entries.EntryDefaultAmount(string.Empty, "Amount");
 
             var borrowLayout = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.Start,
-                BackgroundColor = Color.Blue,
-                Padding = 30,
-                Spacing = 20,
+                VerticalOptions = LayoutOptions.Start, 
+                Padding = 0,
+                Spacing = 10,
                 Children =
                 {
                     new CustomLabel
@@ -40,10 +44,27 @@ namespace EixemX.Pages.Borrow
                         HorizontalTextAlignment = TextAlignment.Center,
                         FontSize = PaletteText.FontSizeM
                     },
-                    amountEntry,
+                    GetMessageLabel(),
+                    new StackLayout
+                    { 
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        Padding = new Thickness(60,0,60,0),
+                        Children =
+                        {
+                            amountEntry
+                        }
+                    },
                     new CustomLabel
                     {
-                        Text = string.Format(TextResources.BorrowCreateEnterAmout, ViewModel.UserAccountModel.Borrow.DisplayAmountRemainingCapacity()),
+                        Text = TextResources.BorrowCreateEnterAmout,
+                        TextColor = Color.White,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        FontSize = PaletteText.FontSizeM
+                    },
+                    new CustomLabel
+                    {
+                        Text = string.Format(TextResources.BorrowCreateEnterAmoutEuro, ViewModel.UserAccountModel.Borrow.DisplayAmountRemainingCapacity()),
                         TextColor = Color.White,
                         HorizontalTextAlignment = TextAlignment.Center,
                         FontSize = PaletteText.FontSizeM
@@ -55,25 +76,17 @@ namespace EixemX.Pages.Borrow
                         HorizontalTextAlignment = TextAlignment.Center,
                         FontSize = PaletteText.FontSizeS
                     }
-                   }
-            };
-
-
-            var buttonLayout = new StackLayout
-            {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.EndAndExpand,
-                Padding = 20,
-                BackgroundColor = Color.Red,
-                Children =
-                {
-                    ComponentFactories.Buttons.TransparentRound(TextResources.Button_Validate, ViewModel.ValidateBorrowClicked)
                 }
             };
+
+
+            var buttonLayout = ComponentFactories.Buttons.TransparentRound(TextResources.Button_Validate,
+                ViewModel.ValidateBorrowClicked, new Thickness(50, 20, 50, 20));
+
             var result = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 Children =
                 {
                     titleLayout,

@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace EixemX.ViewModels.Authentication
 {
-    public class SignInViewModel : BaseViewModel
+    public class SignInViewModel : BaseViewModelNavigation
     {
         private string _password;
 
@@ -35,7 +35,7 @@ namespace EixemX.ViewModels.Authentication
             set
             {
                 _password = value;
-                 SetProperty(ref _username, value, "Password");  
+                 SetProperty(ref _password, value, "Password");  
             }
         }
 
@@ -113,12 +113,6 @@ namespace EixemX.ViewModels.Authentication
                 //ViewModel.ShowSpinner = false;
             } 
             return success;
-        }
-         
-        public async void BackButtonClicked(object sender, EventArgs e)
-        {
-            LogDebug("BackButtonClicked");
-            await PopAsync();
         }
     }
 }

@@ -20,17 +20,13 @@ namespace EixemX.Pages.Authentication
             var titleLayout = ComponentFactories.Layouts.TitleLayout(TextResources.Registration_Title,
                 TextResources.Registration_TitleBar, ViewModel.BackButtonClicked, ViewModel.BackBarButtonClicked);
 
-            var lastnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Lastname);
-            lastnameEntry.SetBinding(Entry.TextProperty, "Model.Lastname", BindingMode.TwoWay); 
+            var lastnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Lastname, "Model.Lastname"); 
 
-            var firstnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Firstname);
-            firstnameEntry.SetBinding(Entry.TextProperty, "Model.Firstname", BindingMode.TwoWay); 
+            var firstnameEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Firstname, "Model.Firstname"); 
 
-            var birthdayEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Birthday);
-            birthdayEntry.SetBinding(Entry.TextProperty, "Model.Birthday", BindingMode.TwoWay); 
+            var birthdayEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Birthday, "Model.Birthday"); 
 
-            var emailEntry = ComponentFactories.Entries.EntryDefaultEmail(TextResources.Account_Field_Email);
-            emailEntry.SetBinding(Entry.TextProperty, "Model.Email", BindingMode.TwoWay);
+            var emailEntry = ComponentFactories.Entries.EntryDefaultEmail(TextResources.Account_Field_Email, "Model.Email"); 
 
             var fieldsLayout = ComponentFactories.Layouts.FormFields(GetMessageLabel(),lastnameEntry, firstnameEntry, birthdayEntry, emailEntry);
 

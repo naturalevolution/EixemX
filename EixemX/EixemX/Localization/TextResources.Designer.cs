@@ -278,6 +278,33 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vous devez renseigner le montant à emprunter.
+        /// </summary>
+        internal static string Alert_Borrow_MandatoryAmount {
+            get {
+                return ResourceManager.GetString("Alert_Borrow_MandatoryAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous devez renseigner votre mot de passe.
+        /// </summary>
+        internal static string Alert_Borrow_MandatoryPassword {
+            get {
+                return ResourceManager.GetString("Alert_Borrow_MandatoryPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vérifier votre mot de passe.
+        /// </summary>
+        internal static string Alert_Borrow_UnableToAuthenticate {
+            get {
+                return ResourceManager.GetString("Alert_Borrow_UnableToAuthenticate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This action requires access to remote data, but you don&apos;t seem to currently have a network connnection. Check your connection and try again..
         /// </summary>
         internal static string Alert_NetworkConnection_Message {
@@ -404,11 +431,56 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Capacité d&apos;emprunt maximum {0} €.
+        ///   Looks up a localized string similar to Montant emprunté : {0} €.
+        /// </summary>
+        internal static string BorrowCreateConfirmAmount {
+            get {
+                return ResourceManager.GetString("BorrowCreateConfirmAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vous disposez désormais de cette somme payable directement avec votre carte bleu..
+        /// </summary>
+        internal static string BorrowCreateConfirmInfoText1 {
+            get {
+                return ResourceManager.GetString("BorrowCreateConfirmInfoText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nous vous rappelons que cette somme empruntée sera débitée le {0} du mois prochain..
+        /// </summary>
+        internal static string BorrowCreateConfirmInfoText2 {
+            get {
+                return ResourceManager.GetString("BorrowCreateConfirmInfoText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CONFIRMATION DE VOTRE EMPRUNT.
+        /// </summary>
+        internal static string BorrowCreateConfirmTitle {
+            get {
+                return ResourceManager.GetString("BorrowCreateConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacité d&apos;emprunt maximum :.
         /// </summary>
         internal static string BorrowCreateEnterAmout {
             get {
                 return ResourceManager.GetString("BorrowCreateEnterAmout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} € .
+        /// </summary>
+        internal static string BorrowCreateEnterAmoutEuro {
+            get {
+                return ResourceManager.GetString("BorrowCreateEnterAmoutEuro", resourceCulture);
             }
         }
         
@@ -458,7 +530,7 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez votre mot de passe.
+        ///   Looks up a localized string similar to Entrez votre mot de passe :.
         /// </summary>
         internal static string BorrowCreateValidatePasswordEnterCode {
             get {
@@ -629,7 +701,7 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Emprunter.
+        ///   Looks up a localized string similar to Saisir un montant.
         /// </summary>
         internal static string Emprunter_BorrowButton {
             get {
@@ -728,7 +800,7 @@ namespace EixemX.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez votre mail.
+        ///   Looks up a localized string similar to Entrez votre mail :.
         /// </summary>
         internal static string PasswordForget_EnterEmail {
             get {

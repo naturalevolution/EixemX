@@ -20,15 +20,38 @@ namespace EixemX.Factories
         }
 
         public CustomLabel Title(string text)
-        {
-            var result = new CustomLabel
+        { 
+            return new CustomLabel
             {
-                TextColor = Color.White, 
-                FontSize = PaletteText.FontSizeM,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Text = text
+                Text = text,
+                TextColor = Palette.White,
+                FontSize = PaletteText.FontSizeML,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            }; 
+        }
+
+        public Grid TitleHeader(string text)
+        { 
+            var grid = new Grid
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Padding = 20
             };
-            return result;
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Absolute) });  
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }); 
+
+            var label = new CustomLabel
+            {
+                Text = text,
+                TextColor = Palette.White,
+                FontSize = PaletteText.FontSizeML,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+            grid.Children.Add(label, 0, 0);
+            return grid;
         }
 
         public CustomLabel TitleSub(string text)
@@ -44,6 +67,7 @@ namespace EixemX.Factories
     {
         CustomLabel LabelMessage();
         CustomLabel Title(string text);
+        Grid TitleHeader(string text);
         CustomLabel TitleSub(string text);
     }
 }

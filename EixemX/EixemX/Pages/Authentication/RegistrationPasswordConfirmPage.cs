@@ -22,11 +22,10 @@ namespace EixemX.Pages.Authentication
 
         public Layout CreatePage()
         {
-            var titleLayout = ComponentFactories.Layouts.TitleLayout(TextResources.Registration_ConfirmSecret,
+            var titleLayout = ComponentFactories.Layouts.TitleSubLayout(TextResources.Registration_ConfirmSecret,
                 TextResources.Registration_Secret, ViewModel.BackButtonClicked);
 
-            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty);
-            passwordEntry.SetBinding(Entry.TextProperty, "Model.PasswordConfirmation", BindingMode.TwoWay);
+            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty, "Model.PasswordConfirmation"); 
 
             var fieldsLayout = ComponentFactories.Layouts.FormFields(GetMessageLabel(), passwordEntry);
 

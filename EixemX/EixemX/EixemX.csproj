@@ -78,9 +78,9 @@
     <Compile Include="Pages\Home\ContactPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModelNavigation.cs" />
     <Compile Include="ViewModels\Home\ContactViewModel.cs" />
-    <Compile Include="Pages\Borrow\EmprunterPage.cs" />
+    <Compile Include="Pages\Borrow\BorrowDashboardPage.cs" />
     <Compile Include="Pages\Borrow\CreateBorrowSelectAmountPage.cs" />
-    <Compile Include="ViewModels\Home\EmprunterViewModel.cs" />
+    <Compile Include="ViewModels\Home\BorrowDashboardViewModel.cs" />
     <Compile Include="Pages\Home\HistoryPage.cs" />
     <Compile Include="ViewModels\Home\HistoryViewModel.cs" />
     <Compile Include="Pages\Home\PayerPage.cs" />

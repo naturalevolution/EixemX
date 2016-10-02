@@ -24,12 +24,9 @@ namespace EixemX.Pages.Authentication
         {
             var linkToAuthentication = ComponentFactories.Buttons.TransparentRound(TextResources.Button_SignIn, ViewModel.SignInClicked); 
 
-            var emailEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Email);
-            emailEntry.SetBinding(Entry.TextProperty, "Username", BindingMode.TwoWay);
+            var emailEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Email, "Username"); 
              
-            var passwordEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Password); 
-            passwordEntry.IsPassword = true;
-            passwordEntry.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
+            var passwordEntry = ComponentFactories.Entries.EntryDefaultText(TextResources.Account_Field_Password, "Password");  
             
             var messageLabel = GetMessageLabel();
 

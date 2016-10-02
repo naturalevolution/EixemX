@@ -10,31 +10,33 @@ namespace EixemX.Factories
     public class EntryFactory : IEntryFactory
     { 
 
-        public CustomEntry EntryDefaultEmail(string text)
+        public CustomEntry EntryDefaultEmail(string text, string fieldName)
         {
-            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Email);
+            return GenerateEntryDefault(text, fieldName, FontType.TextaNarrowRegular, Keyboard.Email);
         }
 
-        public CustomEntry EntryPlainPassword(string text)
+        public CustomEntry EntryPlainPassword(string text, string fieldName)
         {
-            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Default);
+            var result = GenerateEntryDefault(text, fieldName, FontType.TextaNarrowRegular, Keyboard.Default);
+            result.IsPassword = true;
+            return result;
         }
 
-        public CustomEntry EntryDefaultAmount(string text)
+        public CustomEntry EntryDefaultAmount(string text, string fieldName)
         {
-            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Numeric);
+            return GenerateEntryDefault(text, fieldName, FontType.TextaNarrowRegular, Keyboard.Numeric);
         }
 
-        public CustomEntry EntryDefaultText(string text)
+        public CustomEntry EntryDefaultText(string text, string fieldName)
         { 
-            return GenerateEntryDefault(text, FontType.TextaNarrowRegular, Keyboard.Text);
+            return GenerateEntryDefault(text, fieldName, FontType.TextaNarrowRegular, Keyboard.Text);
         }
 
-        private CustomEntry GenerateEntryDefault(string text, FontType fontType, Keyboard keyboard)
+        private CustomEntry GenerateEntryDefault(string placeHolder, string fieldName, FontType fontType, Keyboard keyboard)
         {
             var result = new CustomEntry
             {
-                Placeholder = text,
+                Placeholder = placeHolder,
                 PlaceholderColor = Palette.Green,
                 Keyboard = keyboard,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -45,6 +47,7 @@ namespace EixemX.Factories
                 FontType = fontType,
                 HeightRequest = 45
             };
+            result.SetBinding(Entry.TextProperty, fieldName, BindingMode.TwoWay);
 
             return result;
         }
@@ -52,9 +55,9 @@ namespace EixemX.Factories
 
     public interface IEntryFactory
     { 
-        CustomEntry EntryDefaultText(string text);
-        CustomEntry EntryDefaultEmail(string text);
-        CustomEntry EntryPlainPassword(string text);
-        CustomEntry EntryDefaultAmount(string text);
+        CustomEntry EntryDefaultText(string text, string fieldName);
+        CustomEntry EntryDefaultEmail(string text, string fieldName);
+        CustomEntry EntryPlainPassword(string text, string fieldName);
+        CustomEntry EntryDefaultAmount(string text, string fieldName);
     }
 }

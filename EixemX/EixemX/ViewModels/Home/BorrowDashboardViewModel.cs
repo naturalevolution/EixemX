@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace EixemX.ViewModels.Home
 {
-    public class EmprunterViewModel : BaseViewModelNavigation
+    public class BorrowDashboardViewModel : BaseViewModelNavigation
     {
-        public EmprunterViewModel(INavigation navigation) : base(navigation)
+        public BorrowDashboardViewModel(INavigation navigation) : base(navigation)
         {
 
         }

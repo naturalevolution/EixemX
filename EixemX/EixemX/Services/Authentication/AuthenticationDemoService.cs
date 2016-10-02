@@ -19,7 +19,7 @@ namespace EixemX.Services.Authentication
             public string Note { get; set; }
         }
 
-        private const string EmailDemo = "demo";
+        private const string EmailDemo = "demo@eixem.com";
         private const string PasswordDemo = "demo";
 
         private AuthenticationDemoResult GetDemoAuthentication(string message)
@@ -40,6 +40,7 @@ namespace EixemX.Services.Authentication
         {
             //Server call simulation
             await Task.Delay(2000);
+            AuthenticationResult = null;
 
             if (!string.IsNullOrEmpty(email) && 
                 email.Equals(EmailDemo, StringComparison.CurrentCultureIgnoreCase) &&
@@ -100,6 +101,8 @@ namespace EixemX.Services.Authentication
             var result = new UserAccountModel();
 
             result.Borrow.AddBorrow(35.04, 543, DateTime.Now.AddDays(20));
+            result.Borrow.DateNextRefound = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 5); 
+
             result.Interest.AddInterest(106.59);
             result.Loan.AddLoan(15.67);
             result.User.Update(new UserDetailModel
@@ -118,14 +121,17 @@ namespace EixemX.Services.Authentication
                     CardExpiredDate = DateTime.Now.AddDays(10).AddMonths(5),
                     Iban = "INGGB76 XXX XXX XXX 5686",
                     BankName = "LLOYDS BANK"
-                },
+                }, 
                 Finance = new UserFinanceModel
                 {
                     Amount = 1500
                 },
+                
                 Firstname = "Marc",
                 Lastname = "Durand",
-                DateInscription = DateTime.Now.AddDays(-10)
+                DateInscription = DateTime.Now.AddDays(-10),
+                Email = "demo@eixem.com",
+                DateBirth = DateTime.Now.AddYears(-25).AddDays(15)
             });
 
             return result;

@@ -319,13 +319,13 @@
     <value>CAPACITÉ D'EMPRUNT RESTANTE</value>
   </data>
   <data name="Emprunter_BorrowButton" xml:space="preserve">
-    <value>Emprunter</value>
+    <value>Saisir un montant</value>
   </data>
   <data name="Borrow_Title" xml:space="preserve">
     <value>EMPRUNTER</value>
   </data>
   <data name="BorrowCreateEnterAmout" xml:space="preserve">
-    <value>Capacité d'emprunt maximum {0} €</value>
+    <value>Capacité d'emprunt maximum :</value>
   </data>
   <data name="BorrowCreateEnterAmoutTitle" xml:space="preserve">
     <value>Entrez le montant désiré :</value>
@@ -343,7 +343,7 @@
     <value>Montant demandé : {0} €</value>
   </data>
   <data name="BorrowCreateValidatePasswordEnterCode" xml:space="preserve">
-    <value>Entrez votre mot de passe</value>
+    <value>Entrez votre mot de passe :</value>
   </data>
   <data name="BorrowCreateValidatePasswordTitle" xml:space="preserve">
     <value>Mot de passe oublié ?</value>
@@ -355,9 +355,33 @@
     <value>Envoyer</value>
   </data>
   <data name="PasswordForget_EnterEmail" xml:space="preserve">
-    <value>Entrez votre mail</value>
+    <value>Entrez votre mail :</value>
   </data>
   <data name="PasswordForget_Title" xml:space="preserve">
     <value>MOT DE PASSE OUBLIÉ</value>
+  </data>
+  <data name="Alert_Borrow_MandatoryAmount" xml:space="preserve">
+    <value>Vous devez renseigner le montant à emprunter</value>
+  </data>
+  <data name="BorrowCreateEnterAmoutEuro" xml:space="preserve">
+    <value>{0} € </value>
+  </data>
+  <data name="Alert_Borrow_MandatoryPassword" xml:space="preserve">
+    <value>Vous devez renseigner votre mot de passe</value>
+  </data>
+  <data name="Alert_Borrow_UnableToAuthenticate" xml:space="preserve">
+    <value>Vérifier votre mot de passe</value>
+  </data>
+  <data name="BorrowCreateConfirmAmount" xml:space="preserve">
+    <value>Montant emprunté : {0} €</value>
+  </data>
+  <data name="BorrowCreateConfirmInfoText1" xml:space="preserve">
+    <value>Vous disposez désormais de cette somme payable directement avec votre carte bleu.</value>
+  </data>
+  <data name="BorrowCreateConfirmInfoText2" xml:space="preserve">
+    <value>Nous vous rappelons que cette somme empruntée sera débitée le {0} du mois prochain.</value>
+  </data>
+  <data name="BorrowCreateConfirmTitle" xml:space="preserve">
+    <value>CONFIRMATION DE VOTRE EMPRUNT</value>
   </data>
 </root>

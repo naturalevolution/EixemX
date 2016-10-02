@@ -11,7 +11,7 @@
   <azureActiveDirectoryGraphApiClientId></azureActiveDirectoryGraphApiClientId>
 
   <!-- This value is only here to further demonstrate how you can put other info in these configs. This value is displayed on the splash screen for demo purposes only. -->
-  <azureActiveDirectoryUsername>demo</azureActiveDirectoryUsername>
+  <azureActiveDirectoryUsername>demo@eixem.com</azureActiveDirectoryUsername>
 
   <!-- This value is only here to further demonstrate how you can put other info in these configs. This value is displayed on the splash screen for demo purposes only. -->
   <azureActiveDirectoryPassword>demo</azureActiveDirectoryPassword>

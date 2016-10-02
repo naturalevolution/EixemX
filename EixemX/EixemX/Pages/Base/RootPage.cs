@@ -63,7 +63,7 @@ namespace EixemX.Pages.Base
                         AddPageToDictionnary(id, page);
                         break;
                     case MenuType.Emprunter:
-                        page = new DefaultNavigationPage(new EmprunterPage
+                        page = new DefaultNavigationPage(new BorrowDashboardPage
                         {
                             Icon = ComponentFactories.Images.EmprunterPageIcon()
                         });

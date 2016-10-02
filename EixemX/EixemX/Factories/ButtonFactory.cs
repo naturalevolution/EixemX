@@ -28,6 +28,7 @@ namespace EixemX.Factories
         CustomButton TextCircleButton(string text, EventHandler evenClicked);
         Layout TitleLayout(string text, EventHandler backButton);
         Layout TitleLayout(Image image, ImageButton backButton);
+        Layout TransparentRound(string text, EventHandler eventCliked, Thickness padding);
     }
 
     public class ButtonFactory : IButtonFactory
@@ -223,6 +224,21 @@ namespace EixemX.Factories
 
             return result;
         }
+
+        public Layout TransparentRound(string text, EventHandler eventCliked, Thickness padding)
+        {
+           return new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                Padding = padding,
+                Children =
+                {
+                    TransparentRound(text, eventCliked)
+                }
+            };
+        }
+
         public Layout TitleLayout(string text, EventHandler backButton)
         { 
             var grid = new Grid
@@ -232,9 +248,9 @@ namespace EixemX.Factories
                 Padding = 20
             };
             grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50, GridUnitType.Absolute) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.5, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.10, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.8, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.10, GridUnitType.Star) });
 
             var label = new CustomLabel
             {

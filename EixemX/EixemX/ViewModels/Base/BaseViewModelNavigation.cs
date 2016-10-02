@@ -23,10 +23,17 @@ namespace EixemX.ViewModels.Base
             return string.Format("{0:0.##}", value);
         }
 
-        public virtual void BackButtonClicked(object sender, EventArgs e)
+
+        public void Clear()
+        {
+            DisplayMessage = string.Empty;
+        }
+
+        public virtual async void BackButtonClicked(object sender, EventArgs e)
         {
             LogDebug("BackButtonClicked");
-            App.GoToRoot();
+            //App.GoToRoot();
+            await PopAsync();
         }
 
         public virtual void NavigationMenuClicked(object sender, EventArgs e)
@@ -52,7 +59,8 @@ namespace EixemX.ViewModels.Base
         public virtual async void NavigationLogoClicked(object sender, EventArgs e)
         {
             LogDebug("NavigationLogoClicked");
-            App.GoToRoot();/*
+            App.GoToRoot();
+            /*
             var root = GetRootPage();
             if (root != null)
             {

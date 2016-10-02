@@ -23,8 +23,7 @@ namespace EixemX.Pages.Authentication
             var titleLayout = ComponentFactories.Layouts.TitleSubLayout(TextResources.Registration_PasswordTitle,
                 TextResources.Registration_Secret, ViewModel.BackButtonClicked);
 
-            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty);
-            passwordEntry.SetBinding(Entry.TextProperty, "Model.Password", BindingMode.TwoWay);
+            var passwordEntry = ComponentFactories.Entries.EntryPlainPassword(string.Empty, "Model.Password"); 
 
             var fieldsLayout = ComponentFactories.Layouts.FormFields(GetMessageLabel(), passwordEntry);
 

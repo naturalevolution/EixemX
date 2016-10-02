@@ -3,6 +3,7 @@ using EixemX.Constants;
 using EixemX.Controls.Buttons;
 using EixemX.Controls.Labels;
 using EixemX.Factories;
+using EixemX.Localization;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
@@ -21,7 +22,7 @@ namespace EixemX.Factories
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.Transparent,
+                BackgroundColor = Color.White,
                 Padding = 0
             };
             var screenBg = new Image
@@ -154,26 +155,140 @@ namespace EixemX.Factories
             return result;
         }
 
-        public Layout Separator()
+        public Layout Separator(Thickness padding, Color color)
         {
-           return new StackLayout
+            return new StackLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Start,
-                BackgroundColor = Color.White,
-                Padding = 0,
+                BackgroundColor = Color.Transparent,
+                Padding = padding,
                 Spacing = 10,
                 Children =
                 {
                     new BoxView
                     {
                         HeightRequest = 1,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.Center,
-                        BackgroundColor = Palette.White
+                        BackgroundColor = color
                     }
                 }
             };
+        }
+
+        public Layout Separator()
+        {
+            return Separator(new Thickness(0), Color.White);
+        }
+         
+        public Layout GenerateBox(string titleText, string subTitleText, string amount, EventHandler detailEvent, Color backgroundColor)
+        {
+
+            var result = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Padding = new Thickness(0, 10, 0, 0),
+                Spacing = 5,
+                BackgroundColor = Palette.Transparent
+            };
+            
+            var title = new CustomLabel
+            {
+                FontSize = PaletteText.FontSizeM,
+                TextColor = Palette.White,
+                Text = titleText,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            var detailButton = new CustomButton
+            {
+                Text = TextResources.Dashboard_Details,
+                BackgroundColor = Palette.Transparent,
+                BorderRadius = 25,
+                TextColor = Palette.White,
+                FontSize = PaletteText.FontSizeM,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            detailButton.Released += detailEvent;
+
+            var detail = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Padding = 0,
+                Children =
+                {
+                    detailButton,
+                    ComponentFactories.Buttons.ArrowRight(detailEvent)
+                }
+            };
+
+            result.Children.Add(title);
+
+            if (!string.IsNullOrEmpty(subTitleText))
+            {
+                var subTitle = new CustomLabel
+                {
+                    Text = subTitleText,
+                    FontSize = PaletteText.FontSizeM,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = Palette.White
+                };
+                result.Children.Add(subTitle);
+            }
+
+            if (!string.IsNullOrEmpty(amount))
+            {
+                var price = new CustomButton
+                {
+                    Text = string.Format(TextResources.Field_PriceEuro, amount),
+                    BackgroundColor = Palette.White,
+                    BorderRadius = 25,
+                    TextColor = Palette.Green,
+                    FontSize = PaletteText.FontSizeM,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+                price.Released += detailEvent;
+                result.Children.Add(price);
+            }
+            result.Children.Add(detail);
+            /*
+            if (backgroundColor != Color.Transparent)
+            {
+                var resultBackground = new AbsoluteLayout
+                {
+                    BackgroundColor = Palette.White,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand
+                };
+
+                var boxBg = new BoxView
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    BackgroundColor = backgroundColor,
+                    Opacity = 0.8
+                };
+
+                AbsoluteLayout.SetLayoutBounds(boxBg, new Rectangle(0, 0, 1, 1));
+                AbsoluteLayout.SetLayoutFlags(boxBg, AbsoluteLayoutFlags.All);
+
+                resultBackground.Children.Add(boxBg);
+
+                AbsoluteLayout.SetLayoutBounds(result, new Rectangle(0, 0, 1, 1));
+                AbsoluteLayout.SetLayoutFlags(result, AbsoluteLayoutFlags.All);
+
+                resultBackground.Children.Add(result);
+
+                return resultBackground;
+            }*/
+
+            return result;
         }
 
 
@@ -257,5 +372,7 @@ namespace EixemX.Factories
 
         Layout TitleSubLayout(string text, string titleBar, EventHandler eventBackButton, EventHandler eventBarButton = null);
         Layout Separator();
+        Layout GenerateBox(string title, string subTitle, string displayAmountAvailable, EventHandler eventClicked, Color backgroundColor);
+        Layout Separator(Thickness padding, Color color);
     }
 }
